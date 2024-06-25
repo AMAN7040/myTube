@@ -10,7 +10,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="h-16 w-full grid grid-flow-col items-center bg-gray-300">
+    <div className="h-16 w-full grid grid-flow-col items-center bg-gray-100">
       <div className=" flex col-span-2">
         <FontAwesomeIcon
           icon={faBars}
