@@ -27,7 +27,7 @@ const SideBar = () => {
   return (
     
     !isBarOpen ? (
-        <div className='bg-gray-100 py-6 w-28 h-screen'>
+        <div className='bg-gray-100 py-10 w-28 h-screen'>
        <div className='list-none font-semibold cursor-pointer mb-7 '>
         <li className='text-xl px-7 w-1/4'><FontAwesomeIcon icon={faHomeAlt}/></li>
         <li className='text-[11px] w-3/4 px-6'>Home</li>
