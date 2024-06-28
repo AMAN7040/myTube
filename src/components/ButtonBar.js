@@ -61,7 +61,7 @@ const ButtonBar = () => {
   
 
   return (
-    <div className="px-5 py-3 w-[1790px] overflow-hidden text-white">
+    <div className="px-10 py-3 overflow-visible text-white bg-black opacity-90 ">
       <Slider {...settings}  >
         {lists.map((item, index) => (
           <div key={index} className="px-2 pt-3 text-sm">

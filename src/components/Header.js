@@ -19,7 +19,7 @@ const Header = () => {
   }
 
   return (
-    <div className="h-16 w-full fixed top-0 grid grid-flow-col items-center bg-black opacity-90 z-10">
+    <div className="h-16 w-full fixed top-0 grid grid-flow-col bg-transparent items-center  z-10">
       <div className="flex col-span-2">
         <FontAwesomeIcon
           icon={faBars}
@@ -37,18 +37,18 @@ const Header = () => {
       </div>
       <div className="flex col-span-10 justify-center items-center">
         <input
-          className="border border-gray-700 my-2 w-1/2 h-10 rounded-l-full bg-black opacity-90 text-white px-2"
+          className="border border-gray-600 my-2 w-1/2 h-10 rounded-l-full bg-transparent text-white px-2"
           type="text"
         />
-        <button className="border border-gray-700 my-2 px-3 h-10 text-center rounded-r-full cursor-pointer text-white">
+        <button className="border border-gray-600 my-2 px-3 h-10 text-center rounded-r-full cursor-pointer text-white bg-transparent">
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>
-      <div className="flex col-span-2 items-center justify-evenly space-x-10 ">
+      <div className="flex col-span-2 items-center justify-evenly space-x-10 w-full">
         <FontAwesomeIcon icon={faBell} className="text-xl cursor-pointer text-white" />
         <FontAwesomeIcon
           icon={faUser}
-          className="text-white border border-gray-700  text-lg m-3 p-1 rounded-full cursor-pointer"
+          className="text-white border border-gray-600  text-lg m-3 p-1 rounded-full cursor-pointer"
         />
       </div>
     </div>
