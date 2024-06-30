@@ -9,7 +9,7 @@ const VideoContainer = () => {
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
 
   return (
-    <div className={`grid pl-10 ${isBarOpen ? 'grid-cols-3' : 'grid-cols-4'} bg-transparent w-full `}>
+    <div className={`grid pl-10 ${isBarOpen ? 'grid-cols-3' : 'grid-cols-4'} bg-transparent w-full`}>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
       {videos &&

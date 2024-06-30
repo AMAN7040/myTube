@@ -4,7 +4,7 @@ import MainContainer from './MainContainer'
 
 const Body = () => {
   return (
-    <div className='flex bg-black opacity-90'>
+    <div className='flex' style={{ backgroundColor: '#141414'}}>
       <SideBar/>
       <MainContainer/>
     </div>

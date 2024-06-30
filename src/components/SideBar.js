@@ -54,90 +54,90 @@ const SideBar = () => {
     <div className="bg-transparent py-10 w-64 h-screen top-0 mt-[3rem] left-0 fixed overflow-y-auto">
       <div className="flex items-center mb-4 cursor-pointer text-white">
         <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHomeAlt} />
-        <h4 className="font-medium text-md pl-4 w-3/4">Home</h4>
+        <h4 className="font-medium text-[15px] pl-4 w-3/4">Home</h4>
       </div>
       <div className="flex items-center mb-4 cursor-pointer text-white">
         <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faFilm} />
-        <h4 className="font-medium pl-4 w-3/4">Shorts</h4>
+        <h4 className="font-medium text-[15px] pl-4 w-3/4">Shorts</h4>
       </div>
       <div className="flex items-center mb-4 cursor-pointer text-white">
         <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSquareCheck} />
-        <h4 className="font-medium pl-4 w-3/4">Subscriptions</h4>
+        <h4 className="font-medium text-[15px] pl-4 w-3/4">Subscriptions</h4>
       </div>
       <hr className="border-t border-black mx-4 my-1 mb-4 text-white"></hr>
       <div className="flex items-center mb-6">
-        <h3 className="text-white ml-7 font-medium text-xl">You</h3>
+        <h3 className="text-white ml-7 font-medium text-lg">You</h3>
         <FontAwesomeIcon
-          className="text-lg pl-6 text-white"
+          className="text-md pl-6 text-white"
           icon={faGreaterThan}
         />
       </div>
       <div>
         <div className="flex items-center mb-4 cursor-pointer text-white">
           <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHistory} />
-          <h4 className="font-medium pl-4 w-3/4">History</h4>
+          <h4 className="font-medium text-[15px] pl-4 w-3/4">History</h4>
         </div>
         <div className="flex items-center mb-4 cursor-pointer text-white">
           <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faLayerGroup} />
-          <h4 className="font-medium pl-4 w-3/4">Playlists</h4>
+          <h4 className="font-medium text-[15px] pl-4 w-3/4">Playlists</h4>
         </div>
         <div className="flex items-center mb-4 cursor-pointer text-white">
           <FontAwesomeIcon
             className="text-xl mx-3 w-1/4"
             icon={faSquareCheck}
           />
-          <h4 className="font-medium pl-4 w-3/4 text-white">Watch Later</h4>
+          <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">Watch Later</h4>
         </div>
         <div className="flex items-center mb-4 cursor-pointer text-white">
           <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faThumbsUp} />
-          <h4 className="font-medium pl-4 w-3/4">Liked Vidoes</h4>
+          <h4 className="font-medium text-[15px] pl-4 w-3/4">Liked Vidoes</h4>
         </div>
         <div className="flex items-center mb-4 cursor-pointer text-white">
           <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHistory} />
-          <h4 className="font-medium pl-4 w-3/4">History</h4>
+          <h4 className="font-medium text-[15px] pl-4 w-3/4">History</h4>
         </div>
         <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
-        <h3 className="text-white ml-7 mb-4 font-medium text-xl">
+        <h3 className="text-white ml-7 mb-4 font-medium text-lg">
           Subscriptions
         </h3>
       </div>
       <div>
         <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
-        <h3 className="text-white ml-7 mb-4 font-medium text-xl">Explore</h3>
+        <h3 className="text-white ml-7 mb-4 font-medium text-lg">Explore</h3>
         <div>
           <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faMusic} />
-            <h4 className="font-medium pl-4 w-3/4">Musiv</h4>
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">Music</h4>
           </div>
           <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faFilm} />
-            <h4 className="font-medium pl-4 w-3/4">Films</h4>
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">Films</h4>
           </div>
           <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon
               className="text-xl mx-3 w-1/4"
               icon={faShoppingBag}
             />
-            <h4 className="font-medium pl-4 w-3/4">Shopping</h4>
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">Shopping</h4>
           </div>
           <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faGamepad} />
-            <h4 className="font-medium pl-4 w-3/4">Gaming</h4>
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">Gaming</h4>
           </div>
           <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faRss} />
-            <h4 className="font-medium pl-4 w-3/4">Live</h4>
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">Live</h4>
           </div>
           <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon
               className="text-xl mx-3 w-1/4"
               icon={faNewspaper}
             />
-            <h4 className="font-medium pl-4 w-3/4 text-white">News</h4>
+            <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">News</h4>
           </div>
           <div className="flex items-centermb-4 cursor-pointer text-white">
             <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faPodcast} />
-            <h4 className="font-medium pl-4 w-3/4">Podcast</h4>
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">Podcast</h4>
           </div>
         </div>
       </div>

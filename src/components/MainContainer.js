@@ -8,11 +8,13 @@ const MainContainer = () => {
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
 
   return (
-    <div className={`mt-14 ${isBarOpen ? 'ml-[15rem] w-[1661px]' : 'ml-[6rem] w-[1805px]'} transition-all duration-300 bg-black opacity-90 h-full `}>
-        <ButtonBar/>
-        <VideoContainer/>
+    <div className={`flex flex-col mt-14 transition-all duration-300 bg-transparent ${isBarOpen ? 'ml-[15rem]' : 'ml-[6rem]'} h-[calc(100vh-3.5rem)] overflow-hidden`}>
+      <ButtonBar />
+      <div className="flex-grow overflow-y-auto">
+        <VideoContainer />
+      </div>
     </div>
-  )
+  );
 }
 
 export default MainContainer

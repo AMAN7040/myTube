@@ -7,15 +7,27 @@ import {
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleBar } from "../utils/sidebarSlice";
+import { setToggleSuggestion, updateQuery } from "../utils/searchSlice";
+import useSearchQuery from "../hooks/useSearchQuery";
 
 const Header = () => {
-
   const dispatch = useDispatch();
+  const { searchQuery, suggestions, toggleSuggestion } = useSelector((store) => store.search);
+  useSearchQuery(searchQuery);
 
   const handleSideBar = () => {
     dispatch(toggleBar());
+  };
+
+  const handleQuery = (e) => {
+    const newQuery = e.target.value;
+    dispatch(updateQuery(newQuery));
+  };
+
+  const handleShowSuggestion = () => {
+    dispatch(setToggleSuggestion());
   }
 
   return (
@@ -24,7 +36,7 @@ const Header = () => {
         <FontAwesomeIcon
           icon={faBars}
           className="text-white mx-7 p-1 text-xl font-light my-4 cursor-pointer"
-          onClick={()=> handleSideBar()}
+          onClick={() => handleSideBar()}
         />
         <h2 className="text-white font-medium text-xl flex items-center ">
           <FontAwesomeIcon
@@ -35,17 +47,40 @@ const Header = () => {
           MyTube
         </h2>
       </div>
-      <div className="flex col-span-10 justify-center items-center">
+      <div className="col-span-10 flex justify-center items-center">
         <input
-          className="border border-gray-600 my-2 w-1/2 h-10 rounded-l-full bg-transparent text-white px-2"
+          className="border my-2 w-1/2 h-11 rounded-l-full bg-transparent text-white px-4"
+          style={{ borderColor: "#FFFFFF14" }}
           type="text"
+          value={searchQuery}
+          onChange={(e) => handleQuery(e)}
+          onFocus={handleShowSuggestion}
+          onBlur={handleShowSuggestion}
         />
-        <button className="border border-gray-600 my-2 px-3 h-10 text-center rounded-r-full cursor-pointer text-white bg-transparent">
-          <FontAwesomeIcon icon={faSearch} />
+        <button
+          className="border my-2 px-3 h-11 text-center rounded-r-full cursor-pointer text-white "
+          style={{ backgroundColor: "#FFFFFF1A", borderColor: "#FFFFFF14" }}
+        >
+          <FontAwesomeIcon icon={faSearch} className="px-2" />
         </button>
+        {toggleSuggestion && suggestions && (
+          <div className="absolute mt-[29rem] text-white rounded-lg border shadow-lg z-20 w-[38rem] -ml-[3rem] py-2 " style={{ backgroundColor: "#191a19", borderColor: "#FFFFFF14" }}>
+            {suggestions.map((suggestion) => (
+              <li
+                key={suggestion}
+                className="p-2 hover:bg-gray-700 list-none"
+              >
+                {suggestion}
+              </li>
+            ))}
+          </div>
+        )}
       </div>
       <div className="flex col-span-2 items-center justify-evenly space-x-10 w-full">
-        <FontAwesomeIcon icon={faBell} className="text-xl cursor-pointer text-white" />
+        <FontAwesomeIcon
+          icon={faBell}
+          className="text-xl cursor-pointer text-white"
+        />
         <FontAwesomeIcon
           icon={faUser}
           className="text-white border border-gray-600  text-lg m-3 p-1 rounded-full cursor-pointer"

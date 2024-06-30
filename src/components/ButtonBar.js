@@ -61,12 +61,13 @@ const ButtonBar = () => {
   
 
   return (
-    <div className="px-10 py-3 overflow-visible text-white bg-black opacity-90 ">
+    <div className="px-10 py-3 overflow-visible text-white bg-transparent  ">
       <Slider {...settings}  >
         {lists.map((item, index) => (
           <div key={index} className="px-2 pt-3 text-sm">
             <button
-              className="py-1 px-2 w-full bg-black opacity-90 border border-gray-700 rounded-xl shadow-md text-white hover:bg-gray-700"
+              className="py-1 px-2 w-full border border-gray-700 rounded-lg shadow-md text-white"
+              style={{backgroundColor:'#FFFFFF1A'}}
             >
               {item}
             </button>
