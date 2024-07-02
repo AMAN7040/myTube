@@ -1,55 +1,60 @@
-import React, {  } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import useWatchVideo from "../hooks/useWatchVideo";
 import ReactPlayer from "react-player";
-import useFormatViews from "../hooks/useFormatViews";
-import useFormatPublishedDate from "../hooks/useFormatPublishedDate";
-import useSubscribe from "../hooks/useSubscribe";
-import useFormatSubscribers from "../hooks/useFormtSubscribers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsDown, faThumbsUp } from "@fortawesome/fontawesome-free-solid";
+import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import useWatchVideo from "../hooks/useWatchVideo";
+import useFormatViews from "../hooks/useFormatViews";
+import useSubscribe from "../hooks/useSubscribe";
+import useFormatSubscribers from "../hooks/useFormatSubscribers";
+import useFormattedDate from "../hooks/useFormattedDate";
+import CommentsContainer from "./CommentsContainer";
 
 const Watch = () => {
-  const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
+  const isSidebarOpen = useSelector((store) => store.sidebar.isBarOpen);
   const [searchParams] = useSearchParams();
-  const param = searchParams.get("v");
-  const WatchVideo = useSelector((store) => store.video.WatchVideo);
-  const sub = useSelector((store) => store.subscribe.subDetail);
-  
+  const videoId = searchParams.get("v");
+  const video = useSelector((store) => store.video.WatchVideo);
+  const subscriptionDetail = useSelector((store) => store.subscribe.subDetail);
 
   const formatViews = useFormatViews();
-  const formatPublishedDate = useFormatPublishedDate();
   const formatSubscribers = useFormatSubscribers();
+  const formattedDate = useFormattedDate();
 
-  useSubscribe(WatchVideo?.snippet?.channelId);
-  useWatchVideo(param);
+  useSubscribe(video?.snippet?.channelId);
+  useWatchVideo(videoId);
 
-  if (!WatchVideo) return null;
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+
+  const toggleDescription = () => {
+    setIsDescriptionExpanded(!isDescriptionExpanded);
+  };
+
+  if (!video) return null;
 
   return (
     <div
-      className={`mt-24 transition-all rounded-lg duration-300 bg-transparent ${
-        isBarOpen ? "ml-[15rem]" : "ml-[6rem]"
-      } h-full w-full`}
-      
+      className={`flex flex-col mt-20  bg-transparent ${
+        isSidebarOpen ? "ml-[15rem]" : "ml-[6rem]"
+      }  h-full w-full overflow-hidden `}
     >
-      <div className="w-full flex ">
-        <div className="w-[75%] h-full ">
+      <div className="flex">
+        <div className="w-[75%] h-full">
           <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${param}`}
+            url={`https://www.youtube.com/watch?v=${videoId}`}
             controls
             width="100%"
             height="80vh"
             playing={true}
           />
-          {WatchVideo && (
-            <div className="">
+          {video && (
+            <div>
               <div className="flex justify-between">
                 <div>
                   <div className="py-2">
                     <h1 className="text-lg font-bold text-white">
-                      {WatchVideo?.snippet?.title}
+                      {video?.snippet?.title}
                     </h1>
                   </div>
                   <div className="flex">
@@ -57,125 +62,116 @@ const Watch = () => {
                       <div>
                         <img
                           className="rounded-full w-14"
-                          src={sub?.snippet?.thumbnails?.default?.url}
-                          alt="channleImg"
+                          src={
+                            subscriptionDetail?.snippet?.thumbnails?.default
+                              ?.url
+                          }
+                          alt="channelImg"
                         />
                       </div>
                       <div className="px-5 py-1">
-                        <h2 className="text-white font-semibold text-lg">
-                          {WatchVideo?.snippet?.channelTitle}
+                        <h2 className="text-white font-semibold text-xl">
+                          {video?.snippet?.channelTitle}
                         </h2>
                         <p className="text-gray-400 text-xs my-1">
-                          {formatSubscribers(sub?.statistics?.subscriberCount)}
+                          {formatSubscribers(
+                            subscriptionDetail?.statistics?.subscriberCount
+                          )}
                         </p>
                       </div>
                     </div>
-                    <div className=" text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 hover:bg-gray-50 hover:opacity-70 hover:text-black">
+                    <div className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer">
                       <div className="text-lg font-semibold">Subscribe</div>
                     </div>
                   </div>
                 </div>
                 <div className="flex">
-                  <div className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black">
+                  <div className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer">
                     <FontAwesomeIcon icon={faThumbsUp} />
-                    {formatViews(WatchVideo?.statistics?.likeCount)}
+                    {formatViews(video?.statistics?.likeCount)}
                   </div>
-                  <div className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black">
+                  <div className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer">
                     <FontAwesomeIcon icon={faThumbsDown} />
                   </div>
                 </div>
               </div>
-              <div className="text-white bg-black opacity-25">
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
-                Comments
+              <div>
+                {isDescriptionExpanded ? (
+                  <div className="text-white bg-black opacity-25 p-4 mt-4 rounded-lg">
+                    <div className="flex">
+                      <h2 className="text-white font-semibold text-sm mx-2">
+                        {formatViews(video?.statistics?.viewCount)} views
+                      </h2>
+                      <h2 className="text-white font-semibold text-sm">
+                        {formattedDate(video?.snippet?.publishedAt)}
+                      </h2>
+                    </div>
+                    <div>
+                      {video?.snippet?.tags?.map((item) => (
+                        <p key={item} className="inline-block mr-2 mx-2">
+                          #{item}
+                        </p>
+                      ))}
+                    </div>
+                    <div>
+                      <p className="mx-2 text-sm">
+                        {video?.snippet?.description}
+                      </p>
+                    </div>
+                    <button
+                      className="text-blue-500 mt-2"
+                      onClick={toggleDescription}
+                    >
+                      Show Less
+                    </button>
+                  </div>
+                ) : (
+                  <div className="text-white bg-black opacity-25 p-4 mt-4 rounded-lg">
+                    <div className="flex">
+                      <h2 className="text-white font-semibold text-sm mx-2">
+                        {formatViews(video?.statistics?.viewCount)} views
+                      </h2>
+                      <h2 className="text-white font-semibold text-sm">
+                        {formattedDate(video?.snippet?.publishedAt)}
+                      </h2>
+                    </div>
+                    <div>
+                      {video?.snippet?.tags?.map((item) => (
+                        <p key={item} className="inline-block mr-2 mx-2">
+                          #{item}
+                        </p>
+                      ))}
+                    </div>
+                    <div>
+                      <p className="mx-2 text-sm">
+                        {video?.snippet?.description.substring(0, 100)}...
+                      </p>
+                    </div>
+                    <button
+                      className="text-blue-500 mt-2"
+                      onClick={toggleDescription}
+                    >
+                      Show More
+                    </button>
+                  </div>
+                )}
               </div>
+              <CommentsContainer/>
             </div>
           )}
         </div>
-        <div className="w-[25%] bg-transparent p-4 mx-6">
+        <div className="w-[25%] bg-transparent p-4 mx-6 h-full">
           <h2 className="text-xl font-semibold mb-4">Related Videos</h2>
           {/* Placeholder for related videos */}
-          <div>related videos</div>
+          <div className="flex flex-col space-y-4">
+            <div className="bg-gray-200 p-4 rounded-lg">Related Video 1</div>
+            <div className="bg-gray-200 p-4 rounded-lg">Related Video 2</div>
+            <div className="bg-gray-200 p-4 rounded-lg">Related Video 3</div>
+            <div className="bg-gray-200 p-4 rounded-lg">Related Video 4</div>
+            <div className="bg-gray-200 p-4 rounded-lg">Related Video 5</div>
+          </div>
         </div>
       </div>
-      
     </div>
   );
 };

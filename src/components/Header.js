@@ -41,7 +41,10 @@ const Header = () => {
   };
 
   return (
-    <div className="h-16 w-full fixed top-0 grid grid-flow-col bg-transparent items-center  z-10">
+    <div
+      className="h-16 w-full fixed top-0 grid grid-flow-col items-center z-10"
+      style={{ backgroundColor: "#141414" }}
+    >
       <div className="flex col-span-2">
         <FontAwesomeIcon
           icon={faBars}

@@ -5,3 +5,9 @@ export const YT_SEARCH = 'http://suggestqueries.google.com/complete/search?clien
 export const YT_WATCH = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=' +process.env.REACT_APP_API_KEY + '&id=';
 
 export const YT_SUBSCRIPTION = 'https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=' +process.env.REACT_APP_API_KEY + '&id=';
+
+export const YT_COMMENT = (videoId, pageToken = '') => 
+    'https://www.googleapis.com/youtube/v3/commentThreads?key=' +process.env.REACT_APP_API_KEY + '&textFormat=plainText&part=snippet&videoId=' + videoId + '&maxResults=100&pageToken=' +  pageToken;
+
+export const YT_COMMENT_POST = 'https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&key=' +process.env.REACT_APP_API_KEY;
+

@@ -3,6 +3,7 @@ import sidebarSlice from "./sidebarSlice";
 import videoSlice from "./videoSlice";
 import searchSlice from "./searchSlice";
 import subSlice from "./subSlice";
+import commentSlice from "./commentSlice";
 
 const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
         video: videoSlice,
         search: searchSlice,
         subscribe: subSlice,
+        comment: commentSlice,
     }
 });
 
