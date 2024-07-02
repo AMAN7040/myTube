@@ -15,6 +15,9 @@ const searchSlice = createSlice({
         getSuggestions: (state, action) => {
             state.suggestions = action.payload;
         },
+        clearSuggestion: (state, action) => {
+           return null;
+        },
         setToggleSuggestion: (state, action) => {
             state.toggleSuggestion = ! state.toggleSuggestion;
         },
@@ -24,6 +27,6 @@ const searchSlice = createSlice({
     }
 });
 
-export const {updateQuery, getSuggestions, setToggleSuggestion, setCache} = searchSlice.actions;
+export const {updateQuery, getSuggestions, setToggleSuggestion,clearSuggestion, setCache} = searchSlice.actions;
 
 export default searchSlice.reducer;

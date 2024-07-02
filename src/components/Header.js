@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/fontawesome-free-solid";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleBar } from "../utils/sidebarSlice";
 import { setToggleSuggestion, updateQuery } from "../utils/searchSlice";
@@ -14,7 +14,10 @@ import useSearchQuery from "../hooks/useSearchQuery";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { searchQuery, suggestions, toggleSuggestion } = useSelector((store) => store.search);
+  const { searchQuery, suggestions, toggleSuggestion } = useSelector(
+    (store) => store.search
+  );
+  const [inputValue, setInputValue] = useState(searchQuery);
   useSearchQuery(searchQuery);
 
   const handleSideBar = () => {
@@ -23,12 +26,19 @@ const Header = () => {
 
   const handleQuery = (e) => {
     const newQuery = e.target.value;
+    setInputValue(newQuery);
     dispatch(updateQuery(newQuery));
+    dispatch(setToggleSuggestion(true)); // Show suggestions when typing
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setInputValue(suggestion);
+    dispatch(updateQuery(suggestion));
   };
 
   const handleShowSuggestion = () => {
     dispatch(setToggleSuggestion());
-  }
+  };
 
   return (
     <div className="h-16 w-full fixed top-0 grid grid-flow-col bg-transparent items-center  z-10">
@@ -50,10 +60,11 @@ const Header = () => {
       <div className="col-span-10 flex justify-center items-center">
         <input
           className="border my-2 w-1/2 h-11 rounded-l-full bg-transparent text-white px-4"
+          placeholder="Search"
           style={{ borderColor: "#FFFFFF14" }}
           type="text"
-          value={searchQuery}
-          onChange={(e) => handleQuery(e)}
+          value={inputValue}
+          onChange={handleQuery}
           onFocus={handleShowSuggestion}
           onBlur={handleShowSuggestion}
         />
@@ -64,14 +75,18 @@ const Header = () => {
           <FontAwesomeIcon icon={faSearch} className="px-2" />
         </button>
         {toggleSuggestion && suggestions && (
-          <div className="absolute mt-[29rem] text-white rounded-lg border shadow-lg z-20 w-[38rem] -ml-[3rem] py-2 " style={{ backgroundColor: "#191a19", borderColor: "#FFFFFF14" }}>
+          <div
+            className="absolute mt-[29rem] text-white rounded-lg border shadow-lg z-20 w-[38rem] -ml-[3rem] py-2 "
+            style={{ backgroundColor: "#191a19", borderColor: "#FFFFFF14" }}
+          >
             {suggestions.map((suggestion) => (
-              <li
+              <div
                 key={suggestion}
-                className="p-2 hover:bg-gray-700 list-none"
+                className="p-2 hover:bg-gray-700 "
+                onMouseDown={() => handleSuggestionClick(suggestion)}
               >
                 {suggestion}
-              </li>
+              </div>
             ))}
           </div>
         )}
