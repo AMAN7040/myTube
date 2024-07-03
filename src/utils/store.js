@@ -4,6 +4,7 @@ import videoSlice from "./videoSlice";
 import searchSlice from "./searchSlice";
 import subSlice from "./subSlice";
 import commentSlice from "./commentSlice";
+import userSlice from "./userSlice";
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,8 @@ const store = configureStore({
         search: searchSlice,
         subscribe: subSlice,
         comment: commentSlice,
+        user: userSlice,
+
     }
 });
 

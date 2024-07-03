@@ -12,6 +12,8 @@ import {
   faPodcast,
   faRss,
   faShoppingBag,
+  faSignIn,
+  faSignOut,
   faSquareCheck,
   faThumbsUp,
   faUser,
@@ -19,6 +21,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
@@ -86,7 +89,9 @@ const SideBar = () => {
             className="text-xl mx-3 w-1/4"
             icon={faSquareCheck}
           />
-          <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">Watch Later</h4>
+          <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">
+            Watch Later
+          </h4>
         </div>
         <div className="flex items-center mb-4 cursor-pointer text-white">
           <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faThumbsUp} />
@@ -95,6 +100,16 @@ const SideBar = () => {
         <div className="flex items-center mb-4 cursor-pointer text-white">
           <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHistory} />
           <h4 className="font-medium text-[15px] pl-4 w-3/4">History</h4>
+        </div>
+        <Link to="/login">
+          <div className="flex items-center mb-4 cursor-pointer text-white">
+            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSignIn} />
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">Login</h4>
+          </div>
+        </Link>
+        <div className="flex items-center mb-4 cursor-pointer text-white">
+          <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSignOut} />
+          <h4 className="font-medium text-[15px] pl-4 w-3/4">Sign Out</h4>
         </div>
         <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
         <h3 className="text-white ml-7 mb-4 font-medium text-lg">
@@ -133,7 +148,9 @@ const SideBar = () => {
               className="text-xl mx-3 w-1/4"
               icon={faNewspaper}
             />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">News</h4>
+            <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">
+              News
+            </h4>
           </div>
           <div className="flex items-centermb-4 cursor-pointer text-white">
             <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faPodcast} />

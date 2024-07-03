@@ -5,7 +5,7 @@ import usePostComment from '../hooks/usePostComment';
 const CommentForm = () => {
     const [commentText, setCommentText] = useState('');
     const video = useSelector((store) => store.video.watchVideo);
-    const post = usePostComment(); // Example: Get channelId from Redux state or elsewhere
+    const post = usePostComment(video?.id, video?.snippet?.channelId, commentText); // Example: Get channelId from Redux state or elsewhere
   
     const handlePostComment = async () => {
       if (!commentText.trim()) {
@@ -14,7 +14,7 @@ const CommentForm = () => {
       }
   
       try {
-        await post(video?.id, video?.snippet?.channelId, commentText);
+        await post();
         alert('Comment posted successfully!');
         setCommentText('');
         // Optionally, you can update state or fetch updated comments list here

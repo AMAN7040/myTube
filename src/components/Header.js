@@ -17,6 +17,7 @@ const Header = () => {
   const { searchQuery, suggestions, toggleSuggestion } = useSelector(
     (store) => store.search
   );
+  const user = useSelector((store) => store.user.userInfo);
   const [inputValue, setInputValue] = useState(searchQuery);
   useSearchQuery(searchQuery);
 
@@ -99,10 +100,14 @@ const Header = () => {
           icon={faBell}
           className="text-xl cursor-pointer text-white"
         />
-        <FontAwesomeIcon
-          icon={faUser}
-          className="text-white border border-gray-600  text-lg m-3 p-1 rounded-full cursor-pointer"
-        />
+        {user ? (
+          <img className="h-8 w-8 rounded-full" src={user.photoUrl} alt="userImg" />
+        ) : (
+          <FontAwesomeIcon
+            icon={faUser}
+            className="text-white border border-gray-600  text-lg m-3 p-1 rounded-full cursor-pointer"
+          />
+        )}
       </div>
     </div>
   );

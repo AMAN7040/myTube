@@ -14,7 +14,6 @@ const VideoCard = ({ item }) => {
   useSubscribe(channelId);
 
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
-  const sub = useSelector((store) => store.subscribe.subDetail);
 
   return (
     <div

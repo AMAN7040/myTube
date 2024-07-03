@@ -16,23 +16,32 @@ const Comment = () => {
       <ul className="">
         {allComments &&
           allComments.map((comment, index) => (
-            <li key={comment?.snippet?.topLevelComment?.etag + index} className="">
-              <p className="">
-                <strong className="text-sm">
-                  {comment.snippet.topLevelComment.snippet.authorDisplayName}{" "}
-                  <span className="text-xs text-gray-400">
-                    {formatPublishedAt(
-                      comment?.snippet?.topLevelComment?.snippet?.updatedAt
-                    ) ||
-                      formatPublishedAt(
-                        comment?.snippet?.topLevelComment?.snippet?.publishedAt
-                      )}
-                  </span>
-                </strong>
-              </p>
-              <p className="mx-5 my-1 text-sm">
-                {comment.snippet.topLevelComment.snippet.textDisplay}
-              </p>
+            <li
+              key={comment?.snippet?.topLevelComment?.etag + index}
+              className="flex my-3 mx-3"
+            >
+              <div className="mx-2 my-1">
+                <img className="rounded-full h-10 w-10 bg-cover mx-2" src={comment.snippet.topLevelComment.snippet.authorProfileImageUrl} alt="profileImg"/>
+              </div>
+              <div>
+                <p className="">
+                  <strong className="text-sm">
+                    {comment.snippet.topLevelComment.snippet.authorDisplayName}{" "}
+                    <span className="text-xs text-gray-400">
+                      {formatPublishedAt(
+                        comment?.snippet?.topLevelComment?.snippet?.updatedAt
+                      ) ||
+                        formatPublishedAt(
+                          comment?.snippet?.topLevelComment?.snippet
+                            ?.publishedAt
+                        )}
+                    </span>
+                  </strong>
+                </p>
+                <p className="mx-5 my-1 text-sm">
+                  {comment.snippet.topLevelComment.snippet.textDisplay}
+                </p>
+              </div>
             </li>
           ))}
       </ul>
