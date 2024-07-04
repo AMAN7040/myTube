@@ -5,6 +5,8 @@ const videoSlice = createSlice({
   initialState: {
     allVideos: null,
     WatchVideo: null,
+    category: null,
+    videoCategoryId: 0,
   },
   reducers: {
     getAllVideos: (state, action) => {
@@ -13,9 +15,15 @@ const videoSlice = createSlice({
     getWatchVideo: (state, action) => {
       state.WatchVideo = action.payload;
     },
+    getCategory: (state, action) => {
+      state.category = action.payload;
+    },
+    updateCategoryId : (state, action) => {
+      state.videoCategoryId = action.payload;
+    }
   },
 });
 
-export const { getAllVideos, getWatchVideo } = videoSlice.actions;
+export const { getAllVideos, getWatchVideo, getCategory, updateCategoryId } = videoSlice.actions;
 
 export default videoSlice.reducer;

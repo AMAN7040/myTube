@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { YT_VIDEO_API } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllVideos } from "../utils/videoSlice";
 
 const useAllVideos = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const id = useSelector((store)=> store.video.videoCategoryId);
 
   const getVideo = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(YT_VIDEO_API);
+      const response = await fetch(YT_VIDEO_API + id);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -29,7 +30,7 @@ const useAllVideos = () => {
 
   useEffect(() => {
     getVideo();
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return { loading, error };
 };
