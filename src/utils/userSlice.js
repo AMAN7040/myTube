@@ -21,6 +21,7 @@ export const userSlice = createSlice({
     clearUser: (state) => {
       state.userInfo = null;
       state.isAuthenticated = false;
+      localStorage.setItem("userInfo", JSON.stringify(state.userInfo));   
     },
   },
 });

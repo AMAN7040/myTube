@@ -14,8 +14,8 @@ const Login = () => {
 
   const signInWithGoogle = async () => {
     try {
+      provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
       const result = await signInWithPopup(auth, provider);
-      console.log(result._tokenResponse);
       dispatch(setUser(result._tokenResponse));
       navigate("/"); // Redirect to home page (Browse) after sign-in
     } catch (error) {

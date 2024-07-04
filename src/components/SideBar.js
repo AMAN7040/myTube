@@ -19,12 +19,28 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { signOut } from "firebase/auth";
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { clearUser } from "../utils/userSlice";
+import { auth } from "../utils/firebase";
 
 const SideBar = () => {
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
+  const user = useSelector((store) => store.user.userInfo);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      dispatch(clearUser());
+      navigate("/");
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
 
   return !isBarOpen ? (
     <div className="bg-transparent py-10 w-28 h-screen top-0 mt-[3rem] left-0 fixed">
@@ -67,7 +83,7 @@ const SideBar = () => {
         <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSquareCheck} />
         <h4 className="font-medium text-[15px] pl-4 w-3/4">Subscriptions</h4>
       </div>
-      <hr className="border-t border-black mx-4 my-1 mb-4 text-white"></hr>
+      <hr className="mx-4 my-1 mb-4 text-white"></hr>
       <div className="flex items-center mb-6">
         <h3 className="text-white ml-7 font-medium text-lg">You</h3>
         <FontAwesomeIcon
@@ -75,49 +91,58 @@ const SideBar = () => {
           icon={faGreaterThan}
         />
       </div>
-      <div>
-        <div className="flex items-center mb-4 cursor-pointer text-white">
-          <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHistory} />
-          <h4 className="font-medium text-[15px] pl-4 w-3/4">History</h4>
+      {user ? (
+        <div>
+          <div className="flex items-center mb-4 cursor-pointer text-white">
+            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHistory} />
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">History</h4>
+          </div>
+          <div className="flex items-center mb-4 cursor-pointer text-white">
+            <FontAwesomeIcon
+              className="text-xl mx-3 w-1/4"
+              icon={faLayerGroup}
+            />
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">Playlists</h4>
+          </div>
+          <div className="flex items-center mb-4 cursor-pointer text-white">
+            <FontAwesomeIcon
+              className="text-xl mx-3 w-1/4"
+              icon={faSquareCheck}
+            />
+            <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">
+              Watch Later
+            </h4>
+          </div>
+          <div className="flex items-center mb-4 cursor-pointer text-white">
+            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faThumbsUp} />
+            <h4 className="font-medium text-[15px] pl-4 w-3/4">Liked Vidoes</h4>
+          </div>
+
+          <div
+            className="flex items-center mb-8 cursor-pointer text-white"
+            onClick={() => handleSignOut()}
+          >
+            <FontAwesomeIcon className="text-xl mx-3 w-1/4 " icon={faSignOut} />
+            <h4 className="font-medium text-[15px] pl-4 w-3/4 ">Sign Out</h4>
+          </div>
+
+          <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
         </div>
-        <div className="flex items-center mb-4 cursor-pointer text-white">
-          <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faLayerGroup} />
-          <h4 className="font-medium text-[15px] pl-4 w-3/4">Playlists</h4>
-        </div>
-        <div className="flex items-center mb-4 cursor-pointer text-white">
-          <FontAwesomeIcon
-            className="text-xl mx-3 w-1/4"
-            icon={faSquareCheck}
-          />
-          <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">
-            Watch Later
-          </h4>
-        </div>
-        <div className="flex items-center mb-4 cursor-pointer text-white">
-          <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faThumbsUp} />
-          <h4 className="font-medium text-[15px] pl-4 w-3/4">Liked Vidoes</h4>
-        </div>
-        <div className="flex items-center mb-4 cursor-pointer text-white">
-          <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHistory} />
-          <h4 className="font-medium text-[15px] pl-4 w-3/4">History</h4>
-        </div>
+      ) : (
         <Link to="/login">
           <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSignIn} />
             <h4 className="font-medium text-[15px] pl-4 w-3/4">Login</h4>
           </div>
         </Link>
-        <div className="flex items-center mb-4 cursor-pointer text-white">
-          <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSignOut} />
-          <h4 className="font-medium text-[15px] pl-4 w-3/4">Sign Out</h4>
-        </div>
-        <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
+      )}
+      <div>
         <h3 className="text-white ml-7 mb-4 font-medium text-lg">
           Subscriptions
         </h3>
+        <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
       </div>
       <div>
-        <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
         <h3 className="text-white ml-7 mb-4 font-medium text-lg">Explore</h3>
         <div>
           <div className="flex items-center mb-4 cursor-pointer text-white">
