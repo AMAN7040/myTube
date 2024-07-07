@@ -3,27 +3,37 @@ import { createSlice } from "@reduxjs/toolkit";
 const videoSlice = createSlice({
   name: "video",
   initialState: {
-    allVideos: null,
-    WatchVideo: null,
+    allVideos: [],
+    watchVideo: null, // Changed to camelCase for consistency
     category: null,
     videoCategoryId: 0,
+    nextPageToken: '', // Initialized nextPageToken
   },
   reducers: {
     getAllVideos: (state, action) => {
-      state.allVideos = action.payload;
+      // Concatenate new videos to existing ones
+      state.allVideos = [...state.allVideos, ...action.payload.videos];
+      state.nextPageToken = action.payload.nextPageToken; // Update nextPageToken
     },
     getWatchVideo: (state, action) => {
-      state.WatchVideo = action.payload;
+      state.watchVideo = action.payload; // Set the watched video
     },
     getCategory: (state, action) => {
-      state.category = action.payload;
+      state.category = action.payload; // Set the selected category
     },
-    updateCategoryId : (state, action) => {
-      state.videoCategoryId = action.payload;
-    }
+    updateCategoryId: (state, action) => {
+      state.videoCategoryId = action.payload; // Update the video category ID
+      state.allVideos = []; // Reset videos when category changes
+      state.nextPageToken = ''; // Reset nextPageToken when category changes
+    },
   },
 });
 
-export const { getAllVideos, getWatchVideo, getCategory, updateCategoryId } = videoSlice.actions;
+export const {
+  getAllVideos,
+  getWatchVideo,
+  getCategory,
+  updateCategoryId,
+} = videoSlice.actions;
 
 export default videoSlice.reducer;
