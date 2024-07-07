@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import useFormatPublishedDate from "../hooks/useFormatPublishedDate";
 
 const Comment = () => {
-  const video = useSelector((store) => store.video.WatchVideo);
+  const video = useSelector((store) => store.video.watchVideo);
   const { pageToken, allComments } = useSelector((store) => store.comment);
   const { loading, error, fetchComments } = useComment(video?.id, pageToken);
   const formatPublishedAt = useFormatPublishedDate();
@@ -38,7 +38,7 @@ const Comment = () => {
                     </span>
                   </strong>
                 </p>
-                <p className="mx-5 my-1 text-sm">
+                <p className="mx-5 my-1 text-sm">            
                   {comment.snippet.topLevelComment.snippet.textDisplay}
                 </p>
               </div>
@@ -46,7 +46,7 @@ const Comment = () => {
           ))}
       </ul>
       {pageToken && !loading && (
-        <button onClick={() => fetchComments(pageToken)}>
+        <button className="text-sm mx-2" onClick={() => fetchComments(pageToken)}>
           Load More Comments
         </button>
       )}

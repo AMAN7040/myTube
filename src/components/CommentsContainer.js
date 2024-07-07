@@ -9,7 +9,7 @@ const CommentsContainer = ({video}) => {
   return (
     <div className='mx-2 text-white text-2xl my-4'>
       <p>{allComments.length} Comments</p>
-      {/* <CommentForm/> */}
+      <CommentForm/>
       <Comment />
     </div>
   )

@@ -1,6 +1,5 @@
-// useInfiniteScroll.js
-
 import { useEffect, useRef } from "react";
+import { debounce } from "lodash";
 
 const useInfiniteScroll = (callback) => {
   const observer = useRef();
@@ -9,9 +8,11 @@ const useInfiniteScroll = (callback) => {
   useEffect(() => {
     if (observer.current) observer.current.disconnect();
 
+    const debouncedCallback = debounce(callback, 300);
+
     observer.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        callback();
+        debouncedCallback();
       }
     });
 
@@ -19,6 +20,7 @@ const useInfiniteScroll = (callback) => {
 
     return () => {
       if (observer.current) observer.current.disconnect();
+      debouncedCallback.cancel();
     };
   }, [callback]);
 
