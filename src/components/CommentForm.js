@@ -1,31 +1,36 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import usePostComment from "../hooks/usePostComment";
+import { useSelector } from "react-redux";
+import usePostComment from "../hooks/usePostComment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/fontawesome-free-solid";
-import { getAllComments } from "../utils/commentSlice";
 
 const CommentForm = () => {
   const [commentText, setCommentText] = useState("");
-  // const [loading, setLoading] = useState(false); // State to manage loading state
-  // const video = useSelector((store) => store.video.watchVideo);
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  
+  const video = useSelector((store) => store.video.watchVideo);
   const user = useSelector((store) => store.user.userInfo);
-  const dispatch = useDispatch()
-  // const post = usePostComment();
+
+  const postComment = usePostComment();
 
   const handlePostComment = async () => {
     if (commentText.length === 0) return;
 
-    // setLoading(true);
+    setLoading(true);
+    setSuccessMessage("");
+    setErrorMessage("");
 
     try {
-      // await post(video?.id, commentText);
-      dispatch(getAllComments(commentText))
+      await postComment(video?.id, commentText);
+      setSuccessMessage("Comment posted successfully!");
       setCommentText("");
     } catch (error) {
+      setErrorMessage("Failed to post comment. Please try again.");
       console.error(error);
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -58,12 +63,22 @@ const CommentForm = () => {
       <div className="flex justify-end my-3 mx-2">
         <button
           className="text-white text-sm mx-1"
-          onClick={() => handlePostComment}
-          // disabled={loading} // Disable button when loading is true
+          onClick={handlePostComment} // Invoke function directly
+          disabled={loading} // Disable button when loading is true
         >
-          {/* {loading ? "Posting..." : "Comment"} */}
+          {loading ? "Posting..." : "Comment"}
         </button>
       </div>
+      {successMessage && (
+        <div className="text-green-500 text-sm mt-2">
+          {successMessage}
+        </div>
+      )}
+      {errorMessage && (
+        <div className="text-red-500 text-sm mt-2">
+          {errorMessage}
+        </div>
+      )}
     </div>
   );
 };
