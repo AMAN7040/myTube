@@ -8,6 +8,7 @@ const videoSlice = createSlice({
     category: null,
     videoCategoryId: 0,
     nextPageToken: '', // Initialized nextPageToken
+    relatedVideos: null,
   },
   reducers: {
     getAllVideos: (state, action) => {
@@ -26,6 +27,12 @@ const videoSlice = createSlice({
       state.allVideos = []; // Reset videos when category changes
       state.nextPageToken = ''; // Reset nextPageToken when category changes
     },
+    fetchRelated: (state, action) => {
+      state.relatedVideos = action.payload;
+    },
+    clearRelated: (state,action) => {
+      state.relatedVideos =action.payload;
+    }
   },
 });
 
@@ -34,6 +41,8 @@ export const {
   getWatchVideo,
   getCategory,
   updateCategoryId,
+  fetchRelated,
+  clearRelated,
 } = videoSlice.actions;
 
 export default videoSlice.reducer;

@@ -10,6 +10,7 @@ import useSubscribe from "../hooks/useSubscribe";
 import useFormatSubscribers from "../hooks/useFormatSubscribers";
 import useFormattedDate from "../hooks/useFormattedDate";
 import CommentsContainer from "./CommentsContainer";
+import RealatedVideos from "./RelatedVideos";
 
 const Watch = () => {
   const isSidebarOpen = useSelector((store) => store.sidebar.isBarOpen);
@@ -138,14 +139,10 @@ const Watch = () => {
           )}
         </div>
         <div className="w-[25%] bg-transparent p-4 mx-6 h-full">
-          <h2 className="text-xl font-semibold mb-4">Related Videos</h2>
+          <h2 className="text-white text-lg font-semibold mb-3">Up Next</h2>
           {/* Placeholder for related videos */}
-          <div className="flex flex-col space-y-4">
-            <div className="bg-gray-200 p-4 rounded-lg">Related Video 1</div>
-            <div className="bg-gray-200 p-4 rounded-lg">Related Video 2</div>
-            <div className="bg-gray-200 p-4 rounded-lg">Related Video 3</div>
-            <div className="bg-gray-200 p-4 rounded-lg">Related Video 4</div>
-            <div className="bg-gray-200 p-4 rounded-lg">Related Video 5</div>
+          <div className="flex flex-col space-y-4 overflow-y-auto">
+            <RealatedVideos/>
           </div>
         </div>
       </div>

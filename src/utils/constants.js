@@ -7,8 +7,14 @@ export const YT_WATCH = 'https://youtube.googleapis.com/youtube/v3/videos?part=s
 export const YT_SUBSCRIPTION = 'https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=' +process.env.REACT_APP_API_KEY + '&id=';
 
 export const YT_COMMENT = (videoId, pageToken = '') => 
-    'https://www.googleapis.com/youtube/v3/commentThreads?key=' +process.env.REACT_APP_API_KEY + '&textFormat=plainText&part=snippet&videoId=' + videoId + '&maxResults=50&pageToken=' +  pageToken;
+    'https://www.googleapis.com/youtube/v3/commentThreads?key=' +process.env.REACT_APP_API_KEY + '&textFormat=plainText&part=snippet&videoId=' + videoId + '&maxResults=30&pageToken=' +  pageToken;
 
 export const YT_COMMENT_POST = 'https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&key=' +process.env.REACT_APP_API_KEY;
 
 export const YT_CATEGORY ='https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=' +process.env.REACT_APP_API_KEY;
+
+export const YT_RELATED = (tags, channelId) => 
+    'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=' + tags + '&type=video&channelId=' + channelId + '&key=' +process.env.REACT_APP_API_KEY;
+
+export const YT_MULTIVIDEO = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&key=' +process.env.REACT_APP_API_KEY+ '&id=';
+

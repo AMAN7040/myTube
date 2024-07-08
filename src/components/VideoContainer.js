@@ -23,7 +23,7 @@ const VideoContainer = () => {
   const targetRef = useInfiniteScroll(loadMoreVideos);
 
   const videos = useSelector((store) => store.video.allVideos);
-  const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
+  const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);    
   return (
     <div
       className={`grid pl-10 ${
