@@ -11,9 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleBar } from "../utils/sidebarSlice";
 import { setToggleSuggestion, updateQuery } from "../utils/searchSlice";
 import useSearchQuery from "../hooks/useSearchQuery";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { searchQuery, suggestions, toggleSuggestion } = useSelector(
     (store) => store.search
   );
@@ -25,21 +27,39 @@ const Header = () => {
     dispatch(toggleBar());
   };
 
+  const handleSearch = () => {
+    if (inputValue.trim() !== '') {
+      navigate(`/results?q=${inputValue}`);
+      dispatch(setToggleSuggestion(false)); // Close suggestions after search
+    }
+  };
+
   const handleQuery = (e) => {
     const newQuery = e.target.value;
     setInputValue(newQuery);
     dispatch(updateQuery(newQuery));
-    dispatch(setToggleSuggestion(true)); // Show suggestions when typing
+    if (newQuery.trim() !== '') {
+      dispatch(setToggleSuggestion(true)); // Show suggestions when typing
+    } else {
+      dispatch(setToggleSuggestion(false)); // Hide suggestions if input is empty
+    }
   };
+  
 
   const handleSuggestionClick = (suggestion) => {
     setInputValue(suggestion);
     dispatch(updateQuery(suggestion));
+    dispatch(setToggleSuggestion(false))
   };
 
   const handleShowSuggestion = () => {
-    dispatch(setToggleSuggestion());
+    if (inputValue.trim() !== '') {
+      dispatch(setToggleSuggestion(true)); // Show suggestions only if there's input
+    } else {
+      dispatch(setToggleSuggestion(false)); // Hide suggestions if input is empty
+    }
   };
+  
 
   return (
     <div
@@ -75,6 +95,7 @@ const Header = () => {
         <button
           className="border my-2 px-3 h-11 text-center rounded-r-full cursor-pointer text-white "
           style={{ backgroundColor: "#FFFFFF1A", borderColor: "#FFFFFF14" }}
+          onClick={()=> handleSearch()}
         >
           <FontAwesomeIcon icon={faSearch} className="px-2" />
         </button>

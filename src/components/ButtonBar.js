@@ -20,7 +20,7 @@ const ButtonBar = () => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 9,
+    slidesToShow: 9,      
     slidesToScroll: 3,
     responsive: [
       {

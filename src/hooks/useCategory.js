@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { YT_CATEGORY } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCategory } from "../utils/videoSlice";
 
 const useCategory = () => {
   const dispatch = useDispatch(); // Get dispatch function from Redux
+  const category = useSelector((store)=> store.video.category);
 
   const fetchCategory = async () => {
     try {
@@ -21,7 +22,7 @@ const useCategory = () => {
   };
 
   useEffect(() => {
-    fetchCategory();
-  }, []);
+    !category && fetchCategory();
+  }, [category]);
 };
 export default useCategory;

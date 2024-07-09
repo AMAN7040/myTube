@@ -2,16 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import useFormatPublishedDate from "../hooks/useFormatPublishedDate";
 import useFormatViews from "../hooks/useFormatViews";
-import useSubscribe from "../hooks/useSubscribe";
 
 const RelatedCard = ({ item }) => {
   const { snippet, statistics } = item;
-  const { channelTitle, thumbnails, title, publishedAt, channelId } = snippet;
+  const { channelTitle, thumbnails, title, publishedAt } = snippet;
   const { viewCount } = statistics;
 
   const formatViews = useFormatViews();
   const formatPublishedDate = useFormatPublishedDate();
-  useSubscribe(channelId);
 
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
 

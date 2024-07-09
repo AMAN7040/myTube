@@ -8,9 +8,7 @@ const Shimmer = ({ isBarOpen }) => {
   ));
 
   return (
-    <div className={`grid pl-10 ${
-      isBarOpen ? "grid-cols-3" : "grid-cols-4"
-    } w-full`}>
+    <div>
       {placeholders}
     </div>
   );
