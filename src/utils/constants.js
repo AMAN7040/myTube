@@ -18,3 +18,6 @@ export const YT_RELATED = (tags, channelId) =>
 
 export const YT_MULTIVIDEO = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&key=' +process.env.REACT_APP_API_KEY+ '&id=';
 
+export const YT_SEARCH_VD = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&key=' +process.env.REACT_APP_API_KEY + '&q=';
+
+export const YT_PLAYLIST_D = 'https://www.googleapis.com/youtube/v3/playlists?part=snippet,contentDetails&key=' +process.env.REACT_APP_API_KEY + '&id=';

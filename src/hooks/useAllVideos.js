@@ -1,4 +1,3 @@
-// hooks/useAllVideos.js
 import { useEffect, useState } from "react";
 import { YT_VIDEO_API } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +10,7 @@ const useAllVideos = (nextPageToken) => {
   const id = useSelector((store) => store.video.videoCategoryId);
 
   const getVideo = async () => {
+    
     setLoading(true);
     setError(null);
 
@@ -42,7 +42,7 @@ const useAllVideos = (nextPageToken) => {
     getVideo();
   }, [id, nextPageToken]);
 
-  return { loading, setLoading, error, getVideo };
+  return { loading, setLoading, error };
 };
 
 export default useAllVideos;

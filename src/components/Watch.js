@@ -11,6 +11,7 @@ import useFormatSubscribers from "../hooks/useFormatSubscribers";
 import useFormattedDate from "../hooks/useFormattedDate";
 import CommentsContainer from "./CommentsContainer";
 import RealatedVideos from "./RelatedVideos";
+import useRelated from "../hooks/useRelated";
 
 const Watch = () => {
   const isSidebarOpen = useSelector((store) => store.sidebar.isBarOpen);
@@ -25,7 +26,8 @@ const Watch = () => {
 
   useSubscribe(video?.snippet?.channelId);
   useWatchVideo(videoId);
-
+  useRelated();
+   
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const toggleDescription = () => {
@@ -35,7 +37,11 @@ const Watch = () => {
   if (!video) return null;
 
   return (
-    <div className={`flex flex-col mt-20 bg-transparent ${isSidebarOpen ? "ml-[15rem]" : "ml-[6rem]"} h-full w-full overflow-hidden`}>
+    <div
+      className={`flex flex-col mt-20 bg-transparent ${
+        isSidebarOpen ? "ml-[15rem]" : "ml-[6rem]"
+      } h-full w-full overflow-hidden`}
+    >
       <div className="flex">
         <div className="w-[75%] h-full">
           <ReactPlayer
@@ -50,21 +56,30 @@ const Watch = () => {
               <div className="flex justify-between">
                 <div>
                   <div className="py-2">
-                    <h1 className="text-lg font-bold text-white">{video?.snippet?.title}</h1>
+                    <h1 className="text-lg font-bold text-white">
+                      {video?.snippet?.title}
+                    </h1>
                   </div>
                   <div className="flex">
                     <div className="flex">
                       <div>
                         <img
                           className="rounded-full w-14"
-                          src={subscriptionDetail?.snippet?.thumbnails?.default?.url}
+                          src={
+                            subscriptionDetail?.snippet?.thumbnails?.default
+                              ?.url
+                          }
                           alt="channelImg"
                         />
                       </div>
                       <div className="px-5 py-1">
-                        <h2 className="text-white font-semibold text-xl">{video?.snippet?.channelTitle}</h2>
+                        <h2 className="text-white font-semibold text-xl">
+                          {video?.snippet?.channelTitle}
+                        </h2>
                         <p className="text-gray-400 text-xs my-1">
-                          {formatSubscribers(subscriptionDetail?.statistics?.subscriberCount)}
+                          {formatSubscribers(
+                            subscriptionDetail?.statistics?.subscriberCount
+                          )}
                         </p>
                       </div>
                     </div>
@@ -102,9 +117,14 @@ const Watch = () => {
                       ))}
                     </div>
                     <div>
-                      <p className="mx-2 text-sm">{video?.snippet?.description}</p>
+                      <p className="mx-2 text-sm">
+                        {video?.snippet?.description}
+                      </p>
                     </div>
-                    <button className="text-blue-500 mt-2" onClick={toggleDescription}>
+                    <button
+                      className="text-blue-500 mt-2"
+                      onClick={toggleDescription}
+                    >
                       Show Less
                     </button>
                   </div>
@@ -126,9 +146,14 @@ const Watch = () => {
                       ))}
                     </div>
                     <div>
-                      <p className="mx-2 text-sm">{video?.snippet?.description.substring(0, 100)}...</p>
+                      <p className="mx-2 text-sm">
+                        {video?.snippet?.description.substring(0, 100)}...
+                      </p>
                     </div>
-                    <button className="text-blue-500 mt-2" onClick={toggleDescription}>
+                    <button
+                      className="text-blue-500 mt-2"
+                      onClick={toggleDescription}
+                    >
                       Show More
                     </button>
                   </div>
@@ -142,7 +167,7 @@ const Watch = () => {
           <h2 className="text-white text-lg font-semibold mb-3">Up Next</h2>
           {/* Placeholder for related videos */}
           <div className="flex flex-col space-y-4 overflow-y-auto">
-            <RealatedVideos/>
+            <RealatedVideos />
           </div>
         </div>
       </div>

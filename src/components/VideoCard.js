@@ -2,16 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import useFormatPublishedDate from "../hooks/useFormatPublishedDate";
 import useFormatViews from "../hooks/useFormatViews";
-import useSubscribe from "../hooks/useSubscribe";
 
 const VideoCard = ({ item }) => {
   const { snippet, statistics } = item;
-  const { channelTitle, thumbnails, title, publishedAt, channelId } = snippet;
+  const { channelTitle, thumbnails, title, publishedAt } = snippet;
   const { viewCount } = statistics;
 
   const formatViews = useFormatViews();
   const formatPublishedDate = useFormatPublishedDate();
-  useSubscribe(channelId);
 
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
 
@@ -33,7 +31,8 @@ const VideoCard = ({ item }) => {
           <div className="text-sm">
             <p className="text-gray-500 leading-none mb-1">{channelTitle}</p>
             <p className="text-gray-500">
-              {formatViews(viewCount)} views • {formatPublishedDate(publishedAt)}
+              {formatViews(viewCount)} views •{" "}
+              {formatPublishedDate(publishedAt)}
             </p>
           </div>
         </div>
