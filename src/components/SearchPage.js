@@ -37,8 +37,8 @@ const SearchPage = () => {
                   <Link to={`/watch?v=${id}`}>
                     <div className="flex py-1 rounded-lg w-[80%] justify-center cursor-pointer">
                       <img
-                        src={snippet.thumbnails.standard.url}
-                        alt={snippet.title}
+                        src={snippet?.thumbnails.high.url}
+                        alt={snippet?.title}
                         className="rounded-lg w-[40%] object-cover"
                       />
                       <div className="mx-5 my-5  w-[60%] space-y-4">
@@ -95,9 +95,9 @@ const SearchPage = () => {
                 {isPlaylist && (
                   <div className="flex py-1 rounded-lg   w-[80%] justify-center">
                     <img
-                      src={snippet?.thumbnails?.standard?.url}
+                      src={snippet?.thumbnails?.high?.url}
                       alt={snippet?.title}
-                      className="rounded-lg w-[40%] object-cover"
+                      className="rounded-lg w-full object-cover"
                     />
 
                     <div className="mx-5 my-5  w-[60%] space-y-4">
