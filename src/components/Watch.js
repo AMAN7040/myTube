@@ -12,6 +12,9 @@ import useFormattedDate from "../hooks/useFormattedDate";
 import CommentsContainer from "./CommentsContainer";
 import RealatedVideos from "./RelatedVideos";
 import useRelated from "../hooks/useRelated";
+import LiveSlice from "../utils/liveSlice";
+import Live from "./Live";
+import useLiveChat from "../hooks/useLiveChat";
 
 const Watch = () => {
   const isSidebarOpen = useSelector((store) => store.sidebar.isBarOpen);
@@ -27,7 +30,8 @@ const Watch = () => {
   useSubscribe(video?.snippet?.channelId);
   useWatchVideo(videoId);
   useRelated();
-   
+  // useLiveChat();
+
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const toggleDescription = () => {
@@ -159,11 +163,16 @@ const Watch = () => {
                   </div>
                 )}
               </div>
-              <CommentsContainer />
+              {!video?.snippet?.liveBroadcastContent === "live" && <CommentsContainer />}
             </div>
           )}
         </div>
         <div className="w-[25%] bg-transparent p-4 mx-6 h-full">
+          {video?.snippet?.liveBroadcastContent === "live" && (
+            <div className="border border-gray-400 rounded-xl mb-3 ">
+              <Live/>
+            </div>
+          )}{" "}
           <h2 className="text-white text-lg font-semibold mb-3">Up Next</h2>
           {/* Placeholder for related videos */}
           <div className="flex flex-col space-y-4 overflow-y-auto">
