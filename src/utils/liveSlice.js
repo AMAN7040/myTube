@@ -3,11 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const liveSlice = createSlice({
  name: 'live',
  initialState : {
-    chat: null,
+    chat: [],
  },
  reducers: {
    getChat : (state, action) => {
-    state.chat = action.payload;
+    state.chat.splice(25,1);
+    state.chat = [...state.chat, ...action.payload];
    },
  }
 });

@@ -1,39 +1,44 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { YT_LIVE_CHAT } from "../utils/constants";
 import { getChat } from "../utils/liveSlice";
 import { useEffect } from "react";
 
-const useLiveChat = () => {
-  const video = useSelector((store) => store.video.watchVideo);
+const useLiveChat = (liveID) => {
   const dispatch = useDispatch();
 
   const fetchLiveChat = async () => {
-    const liveChatId = video?.liveStreamingDetails?.activeLiveChatId;
-    console.log("Live Chat ID:", liveChatId); // Log liveChatId for debugging
+    const liveChatId = liveID?.liveStreamingDetails?.activeLiveChatId;
+    if (!liveChatId) {
+      return;
+    }
 
-    if (liveChatId) {
-      try {
-        const response = await fetch(YT_LIVE_CHAT + liveChatId);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        const chatMessages = data.items || []; // Ensure default empty array if no items
-        dispatch(getChat(chatMessages));
-      } catch (error) {
-        console.error("Error fetching live chat:", error);
+    try {
+      const response = await fetch(`${YT_LIVE_CHAT}${liveChatId}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-    } else {
-      console.error("Live chat ID not found");
+      const data = await response.json();
+      const chatMessages = data.items || [];
+      dispatch(getChat(chatMessages));
+    } catch (error) {
+      console.error("Error fetching live chat:", error);
     }
   };
 
   useEffect(() => {
-   
+
+    if (!liveID || !liveID.liveStreamingDetails.activeLiveChatId) return;
+
+    const timer = setInterval(() => {
       fetchLiveChat();
+    }, 2000);
 
-  }, [video?.liveStreamingDetails?.activeLiveChatId]); // Dependency array ensures useEffect runs when 'video' changes
+    return () => {
+      clearInterval(timer);
+    };
+  }, [liveID?.liveStreamingDetails?.activeLiveChatId]);
 
+  // Optionally, return any needed data or functionality from the hook
 };
 
 export default useLiveChat;
