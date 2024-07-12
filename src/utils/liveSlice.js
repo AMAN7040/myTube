@@ -1,18 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const liveSlice = createSlice({
- name: 'live',
- initialState : {
+  name: "live",
+  initialState: {
     chat: [],
- },
- reducers: {
-   getChat : (state, action) => {
-    state.chat.splice(25,1);
-    state.chat = [...state.chat, ...action.payload];
-   },
- }
+  },
+  reducers: {
+    getChat(state, action) {
+      state.chat = [...state.chat , ...action.payload.slice(-50)]; // Limit to 50 messages
+    },
+    addChatMessage(state, action) {
+      state.chat.push(action.payload);
+      state.chat = state.chat.slice(-50); // Limit messages
+    },
+  },
 });
 
-export const {getChat} = liveSlice.actions;
+export const { getChat, addChatMessage } = liveSlice.actions;
 
 export default liveSlice.reducer;

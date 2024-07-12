@@ -3,7 +3,7 @@ import ChatMessage from "./ChatMessage";
 
 import useLiveChat from "../hooks/useLiveChat";
 import { useDispatch, useSelector } from "react-redux";
-import { getChat } from "../utils/liveSlice";
+import { addChatMessage } from "../utils/liveSlice";
 
 const Live = () => {
   const [liveMessage, setLiveMessage] = useState("");
@@ -17,8 +17,8 @@ const Live = () => {
     
     
     const newMessage = {
-        id: 'ASQ1234455' ,
-        authorDetails: {
+      id: Math.random().toString(36).substring(2, 11),
+      authorDetails: {
             profileImageUrl: user.photoUrl, // Example URL
             displayName: user.displayName, // Example display name
         },
@@ -28,7 +28,7 @@ const Live = () => {
     };
 
     // Dispatch the action to send the message
-    dispatch(getChat([newMessage]));
+    dispatch(addChatMessage(newMessage));
 
     // Clear the input after sending the message
     setLiveMessage('');
