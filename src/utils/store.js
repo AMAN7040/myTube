@@ -6,6 +6,7 @@ import subSlice from "./subSlice";
 import commentSlice from "./commentSlice";
 import userSlice from "./userSlice";
 import liveSlice from "./liveSlice";
+import subscribeSlice from "./subscribeSlice";
 
 const store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
         comment: commentSlice,
         user: userSlice,
         live: liveSlice,
+        subscribers: subscribeSlice,
     }
 });
 

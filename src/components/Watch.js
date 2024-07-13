@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,9 +12,8 @@ import useFormattedDate from "../hooks/useFormattedDate";
 import CommentsContainer from "./CommentsContainer";
 import RealatedVideos from "./RelatedVideos";
 import useRelated from "../hooks/useRelated";
-import LiveSlice from "../utils/liveSlice";
 import Live from "./Live";
-import useLiveChat from "../hooks/useLiveChat";
+import { addSubscribe, removeSubscribe } from "../utils/subscribeSlice";
 
 const Watch = () => {
   const isSidebarOpen = useSelector((store) => store.sidebar.isBarOpen);
@@ -22,6 +21,10 @@ const Watch = () => {
   const videoId = searchParams.get("v");
   const video = useSelector((store) => store.video.watchVideo);
   const subscriptionDetail = useSelector((store) => store.subscribe.subDetail);
+  const userSubscribers = useSelector(
+    (store) => store.subscribers.userSubscribers
+  );
+  const dispatch = useDispatch();
 
   const formatViews = useFormatViews();
   const formatSubscribers = useFormatSubscribers();
@@ -30,12 +33,22 @@ const Watch = () => {
   useSubscribe(video?.snippet?.channelId);
   useWatchVideo(videoId);
   useRelated();
-  // useLiveChat();
 
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const toggleDescription = () => {
     setIsDescriptionExpanded(!isDescriptionExpanded);
+  };
+
+  const handleSubscribe = () => {
+    const isSubscribed = userSubscribers.some(
+      (ch) => ch.id === subscriptionDetail?.id
+    );
+    if (!isSubscribed) {
+      dispatch(addSubscribe(subscriptionDetail));
+    } else {
+      dispatch(removeSubscribe(subscriptionDetail));
+    }
   };
 
   if (!video) return null;
@@ -88,7 +101,16 @@ const Watch = () => {
                       </div>
                     </div>
                     <div className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer">
-                      <div className="text-lg font-semibold">Subscribe</div>
+                      <div
+                        className="text-lg font-semibold"
+                        onClick={handleSubscribe}
+                      >
+                        {userSubscribers.some(
+                          (ch) => ch?.id === subscriptionDetail?.id
+                        )
+                          ? "Unsubscribe"
+                          : "Subscribe"}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -163,18 +185,19 @@ const Watch = () => {
                   </div>
                 )}
               </div>
-              {!video?.snippet?.liveBroadcastContent === "live" && <CommentsContainer />}
+              {!video?.snippet?.liveBroadcastContent === "live" && (
+                <CommentsContainer />
+              )}
             </div>
           )}
         </div>
         <div className="w-[25%] bg-transparent p-4 mx-6 h-full">
           {video?.snippet?.liveBroadcastContent === "live" && (
             <div className="border border-gray-400 rounded-xl mb-3 ">
-              <Live/>
+              <Live />
             </div>
           )}{" "}
           <h2 className="text-white text-lg font-semibold mb-3">Up Next</h2>
-          {/* Placeholder for related videos */}
           <div className="flex flex-col space-y-4 overflow-y-auto">
             <RealatedVideos />
           </div>
