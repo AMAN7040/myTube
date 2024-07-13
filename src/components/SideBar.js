@@ -29,6 +29,7 @@ import { auth } from "../utils/firebase";
 const SideBar = () => {
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
   const user = useSelector((store) => store.user.userInfo);
+  const subscribers = useSelector((store) => store.subscribers.userSubscribers);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -140,6 +141,19 @@ const SideBar = () => {
         <h3 className="text-white ml-7 mb-4 font-medium text-lg">
           Subscriptions
         </h3>
+        {subscribers &&
+          subscribers.map((subs) => (
+            <div key={subs?.id} className="flex items-center ml-7 mb-2 cursor-pointer text-white">
+              <div className="w-1/4 mx-1">
+                <img
+                  className="h-8 w-8 rounded-full"
+                  src={subs?.snippet?.thumbnails?.default?.url}
+                  alt="channelImg"
+                />
+              </div>
+              <p className="text-white text-sm w-3/4">{subs?.snippet?.title}</p>
+            </div>
+          ))}
         <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
       </div>
       <div>
