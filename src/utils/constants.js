@@ -23,3 +23,5 @@ export const YT_SEARCH_VD = 'https://youtube.googleapis.com/youtube/v3/search?pa
 export const YT_PLAYLIST_D = 'https://www.googleapis.com/youtube/v3/playlists?part=snippet,contentDetails&key=' +process.env.REACT_APP_API_KEY + '&id=';
 
 export const YT_LIVE_CHAT = 'https://youtube.googleapis.com/youtube/v3/liveChat/messages?part=snippet%2CauthorDetails&maxResults=40&key=' +process.env.REACT_APP_API_KEY + '&liveChatId=';
+
+export const YT_CHANNEL_PLAYLIST = 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=50&key=' +process.env.REACT_APP_API_KEY + '&playlistId=';    

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
@@ -90,9 +90,11 @@ const Watch = () => {
                         />
                       </div>
                       <div className="px-5 py-1">
-                        <h2 className="text-white font-semibold text-xl">
-                          {video?.snippet?.channelTitle}
-                        </h2>
+                        <Link to={`/channel?c=${video?.snippet?.channelId}`}>
+                          <h2 className="text-white font-semibold text-xl">
+                            {video?.snippet?.channelTitle}
+                          </h2>
+                        </Link>
                         <p className="text-gray-400 text-xs my-1">
                           {formatSubscribers(
                             subscriptionDetail?.statistics?.subscriberCount

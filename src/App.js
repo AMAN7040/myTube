@@ -8,6 +8,7 @@ import MainContainer from "./components/MainContainer";
 import Watch from "./components/Watch";
 import Login from "./components/Login";
 import SearchPage from "./components/SearchPage";
+import ChannelScreen from "./components/ChannelScreen";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -27,8 +28,11 @@ function App() {
           path: "results",
           element: <SearchPage />,
         },
+        {
+          path: "channel",
+          element: <ChannelScreen />,
+        },
       ],
-      
     },
     {
       path: "/login",
@@ -39,7 +43,6 @@ function App() {
   return (
     <Provider store={store}>
       <div className="">
-        
         <RouterProvider router={appRouter} />
       </div>
     </Provider>

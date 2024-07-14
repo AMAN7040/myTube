@@ -7,6 +7,7 @@ import commentSlice from "./commentSlice";
 import userSlice from "./userSlice";
 import liveSlice from "./liveSlice";
 import subscribeSlice from "./subscribeSlice";
+import channelSlice from "./channelSlice";
 
 const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
         user: userSlice,
         live: liveSlice,
         subscribers: subscribeSlice,
+        channel: channelSlice,
     }
 });
 
