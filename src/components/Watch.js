@@ -107,12 +107,12 @@ const Watch = () => {
                       </div>
                     </div>
                     <div
-                      className={` text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 r ${
+                      className={` text-white border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 r ${
                         isSubscribed ? "bg-red-600" : "bg-black"
                       } `}
                     >
                       <div
-                        className="text-lg font-semibold"
+                        className="text-lg font-semibold cursor-pointer"
                         onClick={handleSubscribe}
                       >
                         {userSubscribers.some(
@@ -195,7 +195,7 @@ const Watch = () => {
                   </div>
                 )}
               </div>
-              {!video?.snippet?.liveBroadcastContent === "live" && (
+              {video?.snippet?.liveBroadcastContent !== "live" && (
                 <CommentsContainer />
               )}
             </div>
