@@ -51,6 +51,10 @@ const Watch = () => {
     }
   };
 
+  const isSubscribed = userSubscribers.some(
+    (ch) => ch.id === subscriptionDetail?.id
+  );
+
   if (!video) return null;
 
   return (
@@ -102,7 +106,11 @@ const Watch = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer">
+                    <div
+                      className={` text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 r ${
+                        isSubscribed ? "bg-red-600" : "bg-black"
+                      } `}
+                    >
                       <div
                         className="text-lg font-semibold"
                         onClick={handleSubscribe}
