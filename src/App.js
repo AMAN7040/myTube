@@ -9,6 +9,8 @@ import Watch from "./components/Watch";
 import Login from "./components/Login";
 import SearchPage from "./components/SearchPage";
 import ChannelScreen from "./components/ChannelScreen";
+import LikedVideo from "./components/LikedVideo";
+import SavedVideos from "./components/SavedVideos";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -31,6 +33,14 @@ function App() {
         {
           path: "channel",
           element: <ChannelScreen />,
+        },
+        {
+          path: "like",
+          element: <LikedVideo />,
+        },
+        {
+          path: "watchlater",
+          element: <SavedVideos />,
         },
       ],
     },

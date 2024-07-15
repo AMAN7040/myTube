@@ -8,6 +8,8 @@ import userSlice from "./userSlice";
 import liveSlice from "./liveSlice";
 import subscribeSlice from "./subscribeSlice";
 import channelSlice from "./channelSlice";
+import likeVideoSlice from "./likeVideoSlice";
+import saveVideoSlice from "./saveVideoSlice";
 
 const store = configureStore({
     reducer: {
@@ -20,6 +22,8 @@ const store = configureStore({
         live: liveSlice,
         subscribers: subscribeSlice,
         channel: channelSlice,
+        likeUnlike: likeVideoSlice,
+        save: saveVideoSlice,
     }
 });
 

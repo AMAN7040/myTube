@@ -99,7 +99,7 @@ const ChannelScreen = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>      
       <div className="mx-auto grid grid-cols-4">
         {channelVideos &&
           channelVideos.map((video) => (

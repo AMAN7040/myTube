@@ -63,60 +63,64 @@ const SearchPage = () => {
                     </div>
                   </Link>
                 )}
-                {isChannel && (
-                  <div className="flex py-1 rounded-lg  w-[80%] justify-center">
-                    <div className="w-[40%] flex justify-center">
-                      <img
-                        src={snippet?.thumbnails?.medium?.url}
-                        alt={snippet.title}
-                        className="rounded-full w-[30%] my-2"
-                      />
-                    </div>
+                {isChannel && snippet?.channelId && (
+                  <Link to={`/channel?c=${snippet?.channelId}`}>
+                    <div className="flex py-1 rounded-lg  w-[80%] justify-center">
+                      <div className="w-[40%] flex justify-center">
+                        <img
+                          src={snippet?.thumbnails?.medium?.url}
+                          alt={snippet.title}
+                          className="rounded-full w-[30%] my-2"
+                        />
+                      </div>
 
-                    <div className="mx-5 my-5  w-[60%] space-y-4">
-                      <h3 className="text-md text-white font-bold">
-                        {snippet.title}
-                      </h3>
-                      <div className="flex">
-                        <p className="text-gray-400 font-semibold text-sm">
-                          {formatSubscribers(
-                            result?.statistics?.subscriberCount
-                          )}{" "}
-                          . {result?.snippet?.customUrl}
+                      <div className="mx-5 my-5  w-[60%] space-y-4">
+                        <h3 className="text-md text-white font-bold">
+                          {snippet.title}
+                        </h3>
+                        <div className="flex">
+                          <p className="text-gray-400 font-semibold text-sm">
+                            {formatSubscribers(
+                              result?.statistics?.subscriberCount
+                            )}{" "}
+                            . {result?.snippet?.customUrl}
+                          </p>
+                        </div>
+                        <h3 className="text-white">{snippet?.title}</h3>
+                        <p className=" text-sm text-white">
+                          {snippet?.description.substring(0, 200)}...
                         </p>
                       </div>
-                      <h3 className="text-white">{snippet?.title}</h3>
-                      <p className=" text-sm text-white">
-                        {snippet?.description.substring(0, 200)}...
-                      </p>
                     </div>
-                  </div>
+                  </Link>
                 )}
                 {isPlaylist && (
-                  <div className="flex py-1 rounded-lg   w-[80%] justify-center">
-                    <img
-                      src={snippet?.thumbnails?.high?.url}
-                      alt={snippet?.title}
-                      className="rounded-lg w-full object-cover"
-                    />
+                  <Link to={`/watch?v=${id}`}>
+                    <div className="flex py-1 rounded-lg   w-[80%] justify-center">
+                      <img
+                        src={snippet?.thumbnails?.high?.url}
+                        alt={snippet?.title}
+                        className="rounded-lg w-full object-cover"
+                      />
 
-                    <div className="mx-5 my-5  w-[60%] space-y-4">
-                      <h3 className="text-md text-white font-bold">
-                        {snippet.title}
-                      </h3>
-                      <p className="text-white">
-                        {result?.snippet?.channelTitle}
-                      </p>
-                      <h3 className="text-white">
-                        {result?.contentDetails?.itemCount} Videos{" "}
-                      </h3>
-                      {result?.snippet?.description && (
-                        <p className=" text-sm text-white">
-                          {result?.snippet?.description.substring(0, 100)}...
+                      <div className="mx-5 my-5  w-[60%] space-y-4">
+                        <h3 className="text-md text-white font-bold">
+                          {snippet.title}
+                        </h3>
+                        <p className="text-white">
+                          {result?.snippet?.channelTitle}
                         </p>
-                      )}
+                        <h3 className="text-white">
+                          {result?.contentDetails?.itemCount} Videos{" "}
+                        </h3>
+                        {result?.snippet?.description && (
+                          <p className=" text-sm text-white">
+                            {result?.snippet?.description.substring(0, 100)}...
+                          </p>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 )}
               </div>
             );

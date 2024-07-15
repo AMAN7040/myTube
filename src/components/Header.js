@@ -117,10 +117,10 @@ const Header = () => {
         )}
       </div>
       <div className="flex col-span-2 items-center justify-evenly space-x-10 w-full">
-        <FontAwesomeIcon
+        {/* <FontAwesomeIcon
           icon={faBell}
           className="text-xl cursor-pointer text-white"
-        />
+        /> */}
         {user ? (
           <img className="h-8 w-8 rounded-full" src={user.photoUrl} alt="userImg" />
         ) : (

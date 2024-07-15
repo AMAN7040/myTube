@@ -45,24 +45,14 @@ const SideBar = () => {
 
   return !isBarOpen ? (
     <div className="bg-transparent py-10 w-28 h-screen top-0 mt-[3rem] left-0 fixed">
-      <div className="list-none font-semibold cursor-pointer mb-7 text-white">
-        <li className="text-xl px-7 w-1/4">
-          <FontAwesomeIcon icon={faHomeAlt} className="text-white" />
-        </li>
-        <li className="text-[11px] w-3/4 px-6">Home</li>
-      </div>
-      <div className="list-none font-semibold cursor-pointer mb-7 text-white">
-        <li className="text-xl px-7">
-          <FontAwesomeIcon icon={faFilm} />
-        </li>
-        <li className="text-[11px] w-3/4 px-5">Shorts</li>
-      </div>
-      <div className="list-none font-semibold cursor-pointer mb-7 text-white">
-        <li className="text-xl px-7">
-          <FontAwesomeIcon icon={faSquareCheck} />
-        </li>
-        <li className="text-[11px] px-2">Subscriptions</li>
-      </div>
+      <Link to={"/"}>
+        <div className="list-none font-semibold cursor-pointer mb-7 text-white">
+          <li className="text-xl px-7 w-1/4">
+            <FontAwesomeIcon icon={faHomeAlt} className="text-white" />
+          </li>
+          <li className="text-[11px] w-3/4 px-6">Home</li>
+        </div>
+      </Link>
       <div className="list-none font-semibold cursor-pointer text-white">
         <li className="text-xl px-7">
           <FontAwesomeIcon icon={faUser} />
@@ -72,18 +62,13 @@ const SideBar = () => {
     </div>
   ) : (
     <div className="bg-transparent py-10 w-64 h-screen top-0 mt-[3rem] left-0 fixed overflow-y-auto">
-      <div className="flex items-center mb-4 cursor-pointer text-white">
-        <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHomeAlt} />
-        <h4 className="font-medium text-[15px] pl-4 w-3/4">Home</h4>
-      </div>
-      <div className="flex items-center mb-4 cursor-pointer text-white">
-        <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faFilm} />
-        <h4 className="font-medium text-[15px] pl-4 w-3/4">Shorts</h4>
-      </div>
-      <div className="flex items-center mb-4 cursor-pointer text-white">
-        <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSquareCheck} />
-        <h4 className="font-medium text-[15px] pl-4 w-3/4">Subscriptions</h4>
-      </div>
+      <Link to={"/"}>
+        <div className="flex items-center mb-4 cursor-pointer text-white">
+          <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHomeAlt} />
+          <h4 className="font-medium text-[15px] pl-4 w-3/4">Home</h4>
+        </div>
+      </Link>
+
       <hr className="mx-4 my-1 mb-4 text-white"></hr>
       <div className="flex items-center mb-6">
         <h3 className="text-white ml-7 font-medium text-lg">You</h3>
@@ -94,17 +79,18 @@ const SideBar = () => {
       </div>
       {user ? (
         <div>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
+          {/* <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHistory} />
             <h4 className="font-medium text-[15px] pl-4 w-3/4">History</h4>
-          </div>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
+          </div> */}
+          {/* <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon
               className="text-xl mx-3 w-1/4"
               icon={faLayerGroup}
             />
             <h4 className="font-medium text-[15px] pl-4 w-3/4">Playlists</h4>
-          </div>
+          </div> */}
+          <Link to={'/watchlater'}>
           <div className="flex items-center mb-4 cursor-pointer text-white">
             <FontAwesomeIcon
               className="text-xl mx-3 w-1/4"
@@ -113,11 +99,18 @@ const SideBar = () => {
             <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">
               Watch Later
             </h4>
-          </div>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faThumbsUp} />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">Liked Vidoes</h4>
-          </div>
+          </div></Link>
+          <Link to={`/like`}>
+            <div className="flex items-center mb-4 cursor-pointer text-white">
+              <FontAwesomeIcon
+                className="text-xl mx-3 w-1/4"
+                icon={faThumbsUp}
+              />
+              <h4 className="font-medium text-[15px] pl-4 w-3/4">
+                Liked Vidoes
+              </h4>
+            </div>
+          </Link>
 
           <div
             className="flex items-center mb-8 cursor-pointer text-white"
@@ -143,20 +136,27 @@ const SideBar = () => {
         </h3>
         {subscribers &&
           subscribers.map((subs) => (
-            <div key={subs?.id} className="flex items-center ml-7 mb-2 cursor-pointer text-white">
-              <div className="w-1/4 mx-1">
-                <img
-                  className="h-8 w-8 rounded-full"
-                  src={subs?.snippet?.thumbnails?.default?.url}
-                  alt="channelImg"
-                />
+            <Link to={`/channel?c=${subs?.id}`}>
+              <div
+                key={subs?.id}
+                className="flex items-center ml-7 mb-2 cursor-pointer text-white"
+              >
+                <div className="w-1/4 mx-1">
+                  <img
+                    className="h-8 w-8 rounded-full"
+                    src={subs?.snippet?.thumbnails?.default?.url}
+                    alt="channelImg"
+                  />
+                </div>
+                <p className="text-white text-sm w-3/4">
+                  {subs?.snippet?.title}
+                </p>
               </div>
-              <p className="text-white text-sm w-3/4">{subs?.snippet?.title}</p>
-            </div>
+            </Link>
           ))}
         <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
       </div>
-      <div>
+      {/* <div>
         <h3 className="text-white ml-7 mb-4 font-medium text-lg">Explore</h3>
         <div>
           <div className="flex items-center mb-4 cursor-pointer text-white">
@@ -196,7 +196,7 @@ const SideBar = () => {
             <h4 className="font-medium text-[15px] pl-4 w-3/4">Podcast</h4>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
