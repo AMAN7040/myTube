@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSquarePlus,
+  faThumbsDown,
+  faThumbsUp,
+} from "@fortawesome/free-solid-svg-icons";
 import useWatchVideo from "../hooks/useWatchVideo";
 import useFormatViews from "../hooks/useFormatViews";
 import useSubscribe from "../hooks/useSubscribe";
@@ -14,6 +18,8 @@ import RealatedVideos from "./RelatedVideos";
 import useRelated from "../hooks/useRelated";
 import Live from "./Live";
 import { addSubscribe, removeSubscribe } from "../utils/subscribeSlice";
+import { addLike, removeLike } from "../utils/likeVideoSlice";
+import { addSave, removeSave } from "../utils/saveVideoSlice";
 
 const Watch = () => {
   const isSidebarOpen = useSelector((store) => store.sidebar.isBarOpen);
@@ -24,6 +30,8 @@ const Watch = () => {
   const userSubscribers = useSelector(
     (store) => store.subscribers.userSubscribers
   );
+  const likedVideos = useSelector((store) => store.likeUnlike.likeVideo);
+  const savedVideos = useSelector((store) => store.save.savedVideos);
   const dispatch = useDispatch();
 
   const formatViews = useFormatViews();
@@ -50,6 +58,26 @@ const Watch = () => {
       dispatch(removeSubscribe(subscriptionDetail));
     }
   };
+
+  const handleLike = () => {
+    dispatch(addLike(video)); // Pass the video object to addLike action
+  };
+
+  const handleDislike = () => {
+    dispatch(removeLike(video)); // Pass the video object to removeLike action
+  };
+
+  const handleSave = () => {
+    const isSaved = savedVideos.some((v) => v.id === video?.id);
+    if (!isSaved) {
+      dispatch(addSave(video)); // Add the video to saved videos
+    } else {
+      dispatch(removeSave(video)); // Remove the video from saved videos
+    }
+  };
+
+  const isLiked = likedVideos.some((v) => v.id === video?.id);
+  const isSaved = savedVideos.some((v) => v.id === video?.id);
 
   const isSubscribed = userSubscribers.some(
     (ch) => ch.id === subscriptionDetail?.id
@@ -125,12 +153,33 @@ const Watch = () => {
                   </div>
                 </div>
                 <div className="flex">
-                  <div className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer">
-                    <FontAwesomeIcon icon={faThumbsUp} />
+                  <div
+                    className={`text-white border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 cursor-pointer ${
+                      isLiked
+                        ? "bg-blue-500 text-black"
+                        : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
+                    }`}
+                    onClick={handleLike}
+                  >
+                    <FontAwesomeIcon icon={faThumbsUp} />{" "}
                     {formatViews(video?.statistics?.likeCount)}
                   </div>
-                  <div className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer">
+                  <div
+                    className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
+                    onClick={handleDislike}
+                  >
                     <FontAwesomeIcon icon={faThumbsDown} />
+                  </div>
+                  <div
+                    className={`text-white border border-gray-300 rounded-full px-5 py-2 mx-2 my-12 cursor-pointer ${
+                      isSaved
+                        ? "bg-blue-500 text-black"
+                        : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
+                    }`}
+                    onClick={handleSave}
+                  >
+                    <FontAwesomeIcon icon={faSquarePlus} className="mx-2" />
+                    {isSaved ? "Saved" : "Save"}
                   </div>
                 </div>
               </div>
