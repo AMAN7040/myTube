@@ -26,6 +26,7 @@ const Watch = () => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
   const video = useSelector((store) => store.video.watchVideo);
+  const user = useSelector((store) => store.user.userInfo);
   const subscriptionDetail = useSelector((store) => store.subscribe.subDetail);
   const userSubscribers = useSelector(
     (store) => store.subscribers.userSubscribers
@@ -134,54 +135,58 @@ const Watch = () => {
                         </p>
                       </div>
                     </div>
-                    <div
-                      className={` text-white border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 r ${
-                        isSubscribed ? "bg-red-600" : "bg-black"
-                      } `}
-                    >
+                    {user && (
                       <div
-                        className="text-lg font-semibold cursor-pointer"
-                        onClick={handleSubscribe}
+                        className={` text-white border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 r ${
+                          isSubscribed ? "bg-red-600" : "bg-black"
+                        } `}
                       >
-                        {userSubscribers.some(
-                          (ch) => ch?.id === subscriptionDetail?.id
-                        )
-                          ? "Unsubscribe"
-                          : "Subscribe"}
+                        <div
+                          className="text-lg font-semibold cursor-pointer"
+                          onClick={handleSubscribe}
+                        >
+                          {userSubscribers.some(
+                            (ch) => ch?.id === subscriptionDetail?.id
+                          )
+                            ? "Unsubscribe"
+                            : "Subscribe"}
+                        </div>
                       </div>
+                    )}
+                  </div>
+                </div>
+                {user && (
+                  <div className="flex">
+                    <div
+                      className={`text-white border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 cursor-pointer ${
+                        isLiked
+                          ? "bg-blue-500 text-black"
+                          : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
+                      }`}
+                      onClick={handleLike}
+                    >
+                      <FontAwesomeIcon icon={faThumbsUp} />{" "}
+                      {formatViews(video?.statistics?.likeCount)}
+                    </div>
+                    <div
+                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
+                      onClick={handleDislike}
+                    >
+                      <FontAwesomeIcon icon={faThumbsDown} />
+                    </div>
+                    <div
+                      className={`text-white border border-gray-300 rounded-full px-5 py-2 mx-2 my-12 cursor-pointer ${
+                        isSaved
+                          ? "bg-blue-500 text-black"
+                          : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
+                      }`}
+                      onClick={handleSave}
+                    >
+                      <FontAwesomeIcon icon={faSquarePlus} className="mx-2" />
+                      {isSaved ? "Saved" : "Save"}
                     </div>
                   </div>
-                </div>
-                <div className="flex">
-                  <div
-                    className={`text-white border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 cursor-pointer ${
-                      isLiked
-                        ? "bg-blue-500 text-black"
-                        : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
-                    }`}
-                    onClick={handleLike}
-                  >
-                    <FontAwesomeIcon icon={faThumbsUp} />{" "}
-                    {formatViews(video?.statistics?.likeCount)}
-                  </div>
-                  <div
-                    className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
-                    onClick={handleDislike}
-                  >
-                    <FontAwesomeIcon icon={faThumbsDown} />
-                  </div>
-                  <div
-                    className={`text-white border border-gray-300 rounded-full px-5 py-2 mx-2 my-12 cursor-pointer ${
-                      isSaved
-                        ? "bg-blue-500 text-black"
-                        : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
-                    }`}
-                    onClick={handleSave}
-                  >
-                    <FontAwesomeIcon icon={faSquarePlus} className="mx-2" />
-                    {isSaved ? "Saved" : "Save"}
-                  </div>
-                </div>
+                )}
               </div>
               <div>
                 {isDescriptionExpanded ? (

@@ -90,16 +90,17 @@ const SideBar = () => {
             />
             <h4 className="font-medium text-[15px] pl-4 w-3/4">Playlists</h4>
           </div> */}
-          <Link to={'/watchlater'}>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon
-              className="text-xl mx-3 w-1/4"
-              icon={faSquareCheck}
-            />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">
-              Watch Later
-            </h4>
-          </div></Link>
+          <Link to={"/watchlater"}>
+            <div className="flex items-center mb-4 cursor-pointer text-white">
+              <FontAwesomeIcon
+                className="text-xl mx-3 w-1/4"
+                icon={faSquareCheck}
+              />
+              <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">
+                Watch Later
+              </h4>
+            </div>
+          </Link>
           <Link to={`/like`}>
             <div className="flex items-center mb-4 cursor-pointer text-white">
               <FontAwesomeIcon
@@ -121,41 +122,53 @@ const SideBar = () => {
           </div>
 
           <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
+          <div>
+            <h3 className="text-white ml-7 mb-4 font-medium text-lg">
+              Subscriptions
+            </h3>
+            {subscribers &&
+              subscribers.map((subs) => (
+                <Link to={`/channel?c=${subs?.id}`}>
+                  <div
+                    key={subs?.id}
+                    className="flex items-center ml-7 mb-2 cursor-pointer text-white"
+                  >
+                    <div className="w-1/4 mx-1">
+                      <img
+                        className="h-8 w-8 rounded-full"
+                        src={subs?.snippet?.thumbnails?.default?.url}
+                        alt="channelImg"
+                      />
+                    </div>
+                    <p className="text-white text-sm w-3/4">
+                      {subs?.snippet?.title}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
+          </div>
         </div>
       ) : (
-        <Link to="/login">
-          <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSignIn} />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">Login</h4>
+        <>
+          <Link to="/login">
+            <div className="flex items-center mb-4 cursor-pointer text-white">
+              <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSignIn} />
+              <h4 className="font-medium text-[15px] pl-4 w-3/4">Login</h4>
+            </div>
+          </Link>
+          <div>
+            {" "}
+            <h3 className="text-white ml-7 mb-4 font-medium text-lg">
+              {" "}
+              Subscriptions{" "}
+            </h3>{" "}
+            <p className="text-white ml-8 text-sm font-normal mb-4">Login to see Subscriptions</p>{" "}
+            <hr className="border-t border-white mx-3 my-1 mb-4 font-bold"></hr>{" "}
           </div>
-        </Link>
+        </>
       )}
-      <div>
-        <h3 className="text-white ml-7 mb-4 font-medium text-lg">
-          Subscriptions
-        </h3>
-        {subscribers &&
-          subscribers.map((subs) => (
-            <Link to={`/channel?c=${subs?.id}`}>
-              <div
-                key={subs?.id}
-                className="flex items-center ml-7 mb-2 cursor-pointer text-white"
-              >
-                <div className="w-1/4 mx-1">
-                  <img
-                    className="h-8 w-8 rounded-full"
-                    src={subs?.snippet?.thumbnails?.default?.url}
-                    alt="channelImg"
-                  />
-                </div>
-                <p className="text-white text-sm w-3/4">
-                  {subs?.snippet?.title}
-                </p>
-              </div>
-            </Link>
-          ))}
-        <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
-      </div>
+
       {/* <div>
         <h3 className="text-white ml-7 mb-4 font-medium text-lg">Explore</h3>
         <div>
