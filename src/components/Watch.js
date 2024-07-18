@@ -88,12 +88,12 @@ const Watch = () => {
 
   return (
     <div
-      className={`flex flex-col mt-20 bg-transparent ${
-        isSidebarOpen ? "ml-[15rem]" : "ml-[6rem]"
+      className={`2xl:flex 2xl:flex-col mt-20 bg-transparent ${
+        isSidebarOpen ? "ml-[9rem] 2xl:ml-[17rem]" : "ml-[3rem] 2xl:ml-[7rem] "
       } h-full w-full overflow-hidden`}
     >
-      <div className="flex">
-        <div className="w-[75%] h-full">
+      <div className="2xl:flex">
+        <div className="w-[90%] 2xl:w-[75%] h-full">
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${videoId}`}
             controls
@@ -103,10 +103,10 @@ const Watch = () => {
           />
           {video && (
             <div>
-              <div className="flex justify-between">
+              <div className="flex 2xl:justify-between">
                 <div>
-                  <div className="py-2">
-                    <h1 className="text-lg font-bold text-white">
+                  <div className="py-1 2xl:py-2">
+                    <h1 className="text-sm font-bold text-white 2xl:text-lg">
                       {video?.snippet?.title}
                     </h1>
                   </div>
@@ -114,7 +114,7 @@ const Watch = () => {
                     <div className="flex">
                       <div>
                         <img
-                          className="rounded-full w-14"
+                          className="rounded-full w-5"
                           src={
                             subscriptionDetail?.snippet?.thumbnails?.default
                               ?.url
@@ -255,7 +255,7 @@ const Watch = () => {
             </div>
           )}
         </div>
-        <div className="w-[25%] bg-transparent p-4 mx-6 h-full">
+        <div className="2xl:w-[25%] bg-transparent p-4 mx-6 h-full">
           {video?.snippet?.liveBroadcastContent === "live" && (
             <div className="border border-gray-400 rounded-xl mb-3 ">
               <Live />

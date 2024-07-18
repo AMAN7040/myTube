@@ -44,36 +44,36 @@ const SideBar = () => {
   };
 
   return !isBarOpen ? (
-    <div className="bg-transparent py-10 w-28 h-screen top-0 mt-[3rem] left-0 fixed">
+    <div className="bg-transparent py-8 w-10 h-screen top-0 mt-[3rem] left-0 fixed  2xl:py-10 2xl:w-28">
       <Link to={"/"}>
         <div className="list-none font-semibold cursor-pointer mb-7 text-white">
-          <li className="text-xl px-7 w-1/4">
+          <li className="text-lg px-[9px] w-1/4 2xl:text-xl 2xl:px-7 2xl:py-1">
             <FontAwesomeIcon icon={faHomeAlt} className="text-white" />
           </li>
-          <li className="text-[11px] w-3/4 px-6">Home</li>
+          <li className="text-[11px] w-3/4 px-1 2xl:px-5 2xl:text-[14px]">Home</li>
         </div>
       </Link>
       <div className="list-none font-semibold cursor-pointer text-white">
-        <li className="text-xl px-7">
+        <li className="text-lg px-[9px] 2xl:text-xl 2xl:px-7 2xl:py-1 ">
           <FontAwesomeIcon icon={faUser} />
         </li>
-        <li className="text-[11px] w-3/4 px-7">You</li>
+        <li className="text-[11px] w-3/4 px-[6px] 2xl:px-6 2xl:text-[14px]">You</li>
       </div>
     </div>
   ) : (
-    <div className="bg-transparent py-10 w-64 h-screen top-0 mt-[3rem] left-0 fixed overflow-y-auto">
+    <div className="bg-transparent py-8 w-28 h-screen top-0 mt-[3rem] left-0 fixed overflow-y-auto  2xl:py-10 2xl:w-64">
       <Link to={"/"}>
         <div className="flex items-center mb-4 cursor-pointer text-white">
-          <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHomeAlt} />
-          <h4 className="font-medium text-[15px] pl-4 w-3/4">Home</h4>
+          <FontAwesomeIcon className="text-lg px-[9px] w-1/4 2xl:text-xl 2xl:px-4 2xl:py-2" icon={faHomeAlt} />
+          <h4 className="font-medium text-[14px] pl-2 w-3/4 2xl:text-[15px] 2xl:pl-4">Home</h4>
         </div>
       </Link>
 
-      <hr className="mx-4 my-1 mb-4 text-white"></hr>
+      <hr className="mx-1 my-1 mb-5 2xl:mx-4 2xl:mb-4 text-white"></hr>
       <div className="flex items-center mb-6">
-        <h3 className="text-white ml-7 font-medium text-lg">You</h3>
+        <h3 className="text-white ml-2 font-medium text-lg 2xl:ml-7">You</h3>
         <FontAwesomeIcon
-          className="text-md pl-6 text-white"
+          className="text-md pl-4 2xl:pl-10 text-white"
           icon={faGreaterThan}
         />
       </div>
@@ -93,10 +93,10 @@ const SideBar = () => {
           <Link to={"/watchlater"}>
             <div className="flex items-center mb-4 cursor-pointer text-white">
               <FontAwesomeIcon
-                className="text-xl mx-3 w-1/4"
+                className="text-xl mx-1 w-1/4 2xl:mx-3"
                 icon={faSquareCheck}
               />
-              <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">
+              <h4 className="font-medium text-[12px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4 text-white">
                 Watch Later
               </h4>
             </div>
@@ -104,10 +104,10 @@ const SideBar = () => {
           <Link to={`/like`}>
             <div className="flex items-center mb-4 cursor-pointer text-white">
               <FontAwesomeIcon
-                className="text-xl mx-3 w-1/4"
+                className="text-xl mx-1 w-1/4 2xl:mx-3"
                 icon={faThumbsUp}
               />
-              <h4 className="font-medium text-[15px] pl-4 w-3/4">
+              <h4 className="font-medium text-[12px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4 text-white">
                 Liked Vidoes
               </h4>
             </div>
@@ -117,13 +117,13 @@ const SideBar = () => {
             className="flex items-center mb-8 cursor-pointer text-white"
             onClick={() => handleSignOut()}
           >
-            <FontAwesomeIcon className="text-xl mx-3 w-1/4 " icon={faSignOut} />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4 ">Sign Out</h4>
+            <FontAwesomeIcon className="text-xl mx-1 w-1/4 2xl:mx-3 " icon={faSignOut} />
+            <h4 className="font-medium text-[12px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4 text-white ">Sign Out</h4>
           </div>
 
-          <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
+          <hr className="border-t border-white mx-1 2xl:mx-4 my-1 mb-4"></hr>
           <div>
-            <h3 className="text-white ml-7 mb-4 font-medium text-lg">
+            <h3 className="text-white ml-2 font-medium text-[15px] 2xl:text-lg 2xl:ml-7 mb-4">
               Subscriptions
             </h3>
             {subscribers &&
@@ -131,40 +131,40 @@ const SideBar = () => {
                 <Link to={`/channel?c=${subs?.id}`}>
                   <div
                     key={subs?.id}
-                    className="flex items-center ml-7 mb-2 cursor-pointer text-white"
+                    className="flex items-center ml-2 mb-2 cursor-pointer text-white 2xl:ml-7"
                   >
-                    <div className="w-1/4 mx-1">
+                    <div className="w-1/4 mx-1 2xl:mx-1">
                       <img
-                        className="h-8 w-8 rounded-full"
+                        className="h-6 w-6 2xl:h-8 2xl:w-8 rounded-full"
                         src={subs?.snippet?.thumbnails?.default?.url}
                         alt="channelImg"
                       />
                     </div>
-                    <p className="text-white text-sm w-3/4">
+                    <p className="text-white text-[10px] 2xl:text-[13px] mb-1 w-3/4">
                       {subs?.snippet?.title}
                     </p>
                   </div>
                 </Link>
               ))}
-            <hr className="border-t border-white mx-4 my-1 mb-4"></hr>
+            <hr className="mx-1 my-1 mb-2 2xl:mx-4 2xl:mb-4 text-white"></hr>
           </div>
         </div>
       ) : (
         <>
           <Link to="/login">
             <div className="flex items-center mb-4 cursor-pointer text-white">
-              <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faSignIn} />
-              <h4 className="font-medium text-[15px] pl-4 w-3/4">Login</h4>
+              <FontAwesomeIcon className="text-xl mx-1 w-1/4 2xl:mx-3" icon={faSignIn} />
+              <h4 className="font-medium text-[14px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4">Login</h4>
             </div>
           </Link>
           <div>
             {" "}
-            <h3 className="text-white ml-7 mb-4 font-medium text-lg">
+            <h3 className="text-white ml-1 mb-4 font-medium text-sm 2xl:ml-7 2xl:mb-4 2xl:text-lg">
               {" "}
               Subscriptions{" "}
             </h3>{" "}
-            <p className="text-white ml-8 text-sm font-normal mb-4">Login to see Subscriptions</p>{" "}
-            <hr className="border-t border-white mx-3 my-1 mb-4 font-bold"></hr>{" "}
+            <p className="text-white ml-2 text-xs font-normal mb-4 2xl:ml-8 2xl:text-sm">Login to see Subscriptions</p>{" "}
+            <hr className="border-t border-white mx-1 my-1 mb-4 2xl:mx-4 text-white font-bold"></hr>{" "}
           </div>
         </>
       )}

@@ -41,7 +41,7 @@ const ButtonBar = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
@@ -51,11 +51,11 @@ const ButtonBar = () => {
   if (!category) return null;
 
   return (
-    <div className="px-10 py-3 overflow-visible text-white bg-transparent  ">
+    <div className="px-12 py-2 2xl:px-10 2xl:py-3 overflow-visible text-white bg-transparent  ">
       <Slider {...settings}>
-        <div className="px-2 pt-3 text-sm ">
+        <div className="px-1 pt-3 2xl:px-2 text-xs 2xl:text-sm">
           <button
-            className="py-1 px-2 w-full border border-gray-700 rounded-lg shadow-md text-white"
+            className="py-1 px-1 2xl:px-2 w-full border border-gray-700 rounded-lg shadow-md text-white"
             style={{ backgroundColor: "#FFFFFF1A" }}
             onClick={()=> handlecategory(0)}
           >
@@ -63,9 +63,9 @@ const ButtonBar = () => {
           </button>
         </div>
         {category.map((item) => (
-          <div key={item.snippet.title} className="px-2 pt-3 text-sm ">
+          <div key={item.snippet.title} className="px-1 pt-3 2xl:px-2 text-xs 2xl:text-sm">
             <button
-              className="py-1 px-2 w-full border border-gray-700 rounded-lg shadow-md text-white"
+              className="py-1 px-1 2xl:px-2 w-full border border-gray-700 rounded-lg shadow-md text-white"
               style={{ backgroundColor: "#FFFFFF1A" }}
               onClick={()=> handlecategory(item.id)}
             >

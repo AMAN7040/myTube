@@ -16,17 +16,17 @@ const VideoCard = ({ item }) => {
   return (
     <div
       className={`${
-        isBarOpen ? "w-[470px] " : "w-[400px]"
-      } my-2 shadow-lg bg-transparent `}
+        isBarOpen ? "w-[280px] 2xl:w-[470px] " : "w-[320px] 2xl:w-[400px]"
+      } my-1 2xl:my-1 shadow-lg bg-transparent `}
     >
       <img
         src={thumbnails.medium.url}
         alt="video"
         className="w-full rounded-xl"
       />
-      <div className="px-5 py-2">
+      <div className="px-2 py-2 2xl:px-5">
         <div className="font-bold text-md text-white mb-2">{title}</div>
-        <div className="flex  mb-4">
+        <div className="flex  mb-2 2xl:mb-4">
           {/* <img src={channelPhotoUrl} alt="channel" className="w-10 h-10 rounded-full mr-2" /> */}
           <div className="text-sm">
             <p className="text-gray-500 leading-none mb-1">{channelTitle}</p>

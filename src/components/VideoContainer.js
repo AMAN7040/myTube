@@ -28,13 +28,13 @@ const VideoContainer = () => {
   return (
     <div
       className={`grid pl-10 ${
-        isBarOpen ? "grid-cols-3" : "grid-cols-4"
+        isBarOpen ? "grid-cols-1 2xl:grid-cols-3" : "grid-cols-1 2xl:grid-cols-4"
       } bg-transparent w-full`}
     >
       {loading && <Shimmer isBarOpen={isBarOpen} />}
       {error && (
-        <p className="pt-5" style={{ color: "red" }}>
-          Error: {error}
+        <p className="pt-5 text-sm" style={{ color: "red" }}>
+          Error: {error} Youtube Rate limit exceeded try again after some time
         </p>
       )}
       {videos.map((video, index) => (
