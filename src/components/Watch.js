@@ -94,7 +94,7 @@ const Watch = () => {
     >
       <div className="2xl:flex">
         <div className="w-[90%] 2xl:w-[75%] h-full">
-          <div className="h-40vh 2xl:h-80vh">
+          <div className="h-[40vh] 2xl:h-[80vh]">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${videoId}`}
               controls
