@@ -94,13 +94,15 @@ const Watch = () => {
     >
       <div className="2xl:flex">
         <div className="w-[90%] 2xl:w-[75%] h-full">
-          <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${videoId}`}
-            controls
-            width="100%"
-            height="80vh"
-            playing={true}
-          />
+          <div className="h-40vh 2xl:h-80vh">
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${videoId}`}
+              controls
+              width="100%"
+              height="100%"
+              playing={true}
+            />
+          </div>
           {video && (
             <div>
               <div className="flex 2xl:justify-between">
