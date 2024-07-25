@@ -94,7 +94,7 @@ const Watch = () => {
     >
       <div className="2xl:flex">
         <div className="w-[90%] 2xl:w-[75%] h-full">
-          <div className="h-[40vh] 2xl:h-[80vh]">
+          <div className="h-[30vh] 2xl:h-[80vh] rounded-md">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${videoId}`}
               controls
@@ -105,9 +105,9 @@ const Watch = () => {
           </div>
           {video && (
             <div>
-              <div className="flex 2xl:justify-between">
+              <div className="flex flex-wrap 2xl:justify-between">
                 <div>
-                  <div className="py-1 2xl:py-2">
+                  <div className="py-3 2xl:py-2">
                     <h1 className="text-sm font-bold text-white 2xl:text-lg">
                       {video?.snippet?.title}
                     </h1>
@@ -116,7 +116,7 @@ const Watch = () => {
                     <div className="flex">
                       <div>
                         <img
-                          className="rounded-full w-5"
+                          className="rounded-full w-10 my-1"
                           src={
                             subscriptionDetail?.snippet?.thumbnails?.default
                               ?.url
@@ -124,13 +124,13 @@ const Watch = () => {
                           alt="channelImg"
                         />
                       </div>
-                      <div className="px-5 py-1">
+                      <div className="px-5 py-1 2xl:px-5">
                         <Link to={`/channel?c=${video?.snippet?.channelId}`}>
-                          <h2 className="text-white font-semibold text-xl">
+                          <h2 className="text-white font-semibold text-sm 2xl:text-xl">
                             {video?.snippet?.channelTitle}
                           </h2>
                         </Link>
-                        <p className="text-gray-400 text-xs my-1">
+                        <p className="text-gray-400 text-xs 2xl:my-1">
                           {formatSubscribers(
                             subscriptionDetail?.statistics?.subscriberCount
                           )}
@@ -139,12 +139,12 @@ const Watch = () => {
                     </div>
                     {user && (
                       <div
-                        className={` text-white border border-gray-300 rounded-full px-5 py-1 mx-6 my-3 r ${
+                        className={` text-white border border-gray-300 rounded-full px-2 py-1 mx-2 my-2 2xl:px-5 2xl:mx-6 2xl:my-3 ${
                           isSubscribed ? "bg-red-600" : "bg-black"
                         } `}
                       >
                         <div
-                          className="text-lg font-semibold cursor-pointer"
+                          className="text-xs 2xl:text-lg font-semibold cursor-pointer"
                           onClick={handleSubscribe}
                         >
                           {userSubscribers.some(
@@ -160,7 +160,7 @@ const Watch = () => {
                 {user && (
                   <div className="flex">
                     <div
-                      className={`text-white border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 cursor-pointer ${
+                      className={`text-white border border-gray-300 rounded-full text-xs px-3 py-3 mx-5 my-3 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg cursor-pointer ${
                         isLiked
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
@@ -171,13 +171,13 @@ const Watch = () => {
                       {formatViews(video?.statistics?.likeCount)}
                     </div>
                     <div
-                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full px-5 py-2 mx-3 my-12 hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
+                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full text-xs px-3 py-3 mx-5 my-3 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
                       onClick={handleDislike}
                     >
                       <FontAwesomeIcon icon={faThumbsDown} />
                     </div>
                     <div
-                      className={`text-white border border-gray-300 rounded-full px-5 py-2 mx-2 my-12 cursor-pointer ${
+                      className={`text-white border border-gray-300 rounded-full px-3 py-2 mx-5 my-3 2xl:px-5 2xl:py-2 2xl:mx-2 2xl:my-12 cursor-pointer ${
                         isSaved
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"

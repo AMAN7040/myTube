@@ -16,7 +16,7 @@ const VideoCard = ({ item }) => {
   return (
     <div
       className={`${
-        isBarOpen ? "w-[280px] 2xl:w-[470px] " : "w-[320px] 2xl:w-[400px]"
+        isBarOpen ? "w-[260px] 2xl:w-[470px] " : "w-[320px] 2xl:w-[400px]"
       } my-1 2xl:my-1 shadow-lg bg-transparent `}
     >
       <img
