@@ -8,9 +8,9 @@ const CommentsContainer = ({video}) => {
   const { allComments } = useSelector((store) => store.comment);
   const user = useSelector((store) => store.user.userInfo);
   return (
-    <div className='mx-2 text-white text-2xl my-4'>
+    <div className='mx-0 text-white text-sm my-3 2xl:mx-2 2xl:text-2xl 2xl:my-4'>
       <p>{allComments.length} Comments</p>
-      {user ? <CommentForm/> : <p className='mx-5 text-[15px]'>Login to post a comment</p>}
+      {user ? <CommentForm/> : <p className='mx-1 text-[10px] 2xl:mx-5 2xl:text-[15px]'>Login to post a comment</p>}
       <Comment />
     </div>
   )

@@ -35,19 +35,19 @@ const CommentForm = () => {
   };
 
   return (
-    <div className="flex flex-col my-4">
+    <div className="flex flex-col my-2 2xl:my-4">
       <div className="flex">
-        <div className="mr-5 my-4">
+        <div className="mr-2 my-3 2xl:mr-5 2xl:my-4">
           {user ? (
             <img
-              className="h-8 w-8 rounded-full"
+              className="h-6 w-6 rounded-full 2xl:h-8 2xl:w-8"
               src={user.photoUrl}
               alt="userImg"
             />
           ) : (
             <FontAwesomeIcon
               icon={faUser}
-              className="text-white border border-gray-600 text-lg p-1 rounded-full cursor-pointer"
+              className="text-white border border-gray-600 text-md p-1 rounded-full cursor-pointer 2xl:text-lg"
             />
           )}
         </div>
@@ -60,7 +60,7 @@ const CommentForm = () => {
           required
         />
       </div>
-      <div className="flex justify-end my-3 mx-2">
+      <div className="flex justify-end my-2 mx-1 2xl:my-3 2xl:mx-2">
         <button
           className="text-white text-sm mx-1"
           onClick={handlePostComment} // Invoke function directly

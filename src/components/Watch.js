@@ -89,7 +89,7 @@ const Watch = () => {
   return (
     <div
       className={`2xl:flex 2xl:flex-col mt-20 bg-transparent ${
-        isSidebarOpen ? "ml-[9rem] 2xl:ml-[17rem]" : "ml-[3rem] 2xl:ml-[7rem] "
+        isSidebarOpen ? "ml-[8rem] 2xl:ml-[17rem]" : "ml-[3rem] 2xl:ml-[7rem] "
       } h-full w-full overflow-hidden`}
     >
       <div className="2xl:flex">
@@ -139,7 +139,7 @@ const Watch = () => {
                     </div>
                     {user && (
                       <div
-                        className={` text-white border border-gray-300 rounded-full px-2 py-1 mx-2 my-2 2xl:px-5 2xl:mx-6 2xl:my-3 ${
+                        className={` text-white border border-gray-300 rounded-full px-2 py-2 mx-2 my-3 2xl:px-5 2xl:mx-6 2xl:my-3 ${
                           isSubscribed ? "bg-red-600" : "bg-black"
                         } `}
                       >
@@ -160,7 +160,7 @@ const Watch = () => {
                 {user && (
                   <div className="flex">
                     <div
-                      className={`text-white border border-gray-300 rounded-full text-xs px-3 py-3 mx-5 my-3 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg cursor-pointer ${
+                      className={`text-white border border-gray-300 rounded-full text-xs px-2 py-3 mx-2 my-3 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg cursor-pointer ${
                         isLiked
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
@@ -171,20 +171,21 @@ const Watch = () => {
                       {formatViews(video?.statistics?.likeCount)}
                     </div>
                     <div
-                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full text-xs px-3 py-3 mx-5 my-3 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
+                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full text-xs px-3 py-3 mx-2 my-3 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
                       onClick={handleDislike}
                     >
+                      Dislike{' '}
                       <FontAwesomeIcon icon={faThumbsDown} />
                     </div>
                     <div
-                      className={`text-white border border-gray-300 rounded-full px-3 py-2 mx-5 my-3 2xl:px-5 2xl:py-2 2xl:mx-2 2xl:my-12 cursor-pointer ${
+                      className={`text-white border text-xs border-gray-300 rounded-full px-3 py-3 mx-2 my-3 2xl:px-5 2xl:text-lg 2xl:py-2 2xl:mx-2 2xl:my-12 cursor-pointer ${
                         isSaved
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
                       }`}
                       onClick={handleSave}
                     >
-                      <FontAwesomeIcon icon={faSquarePlus} className="mx-2" />
+                      <FontAwesomeIcon icon={faSquarePlus} className="mx-1 2xl:mx-2" />
                       {isSaved ? "Saved" : "Save"}
                     </div>
                   </div>
@@ -192,12 +193,12 @@ const Watch = () => {
               </div>
               <div>
                 {isDescriptionExpanded ? (
-                  <div className="text-white bg-black opacity-25 p-4 mt-4 rounded-lg">
+                  <div className="text-white bg-black opacity-25 p-4 mt-4 rounded-lg text-[10px] 2xl:text-[14px]">
                     <div className="flex">
-                      <h2 className="text-white font-semibold text-sm mx-2">
+                      <h2 className="text-white font-semibold mx-2">
                         {formatViews(video?.statistics?.viewCount)} views
                       </h2>
-                      <h2 className="text-white font-semibold text-sm">
+                      <h2 className="text-white font-semibold ">
                         {formattedDate(video?.snippet?.publishedAt)}
                       </h2>
                     </div>
@@ -209,7 +210,7 @@ const Watch = () => {
                       ))}
                     </div>
                     <div>
-                      <p className="mx-2 text-sm">
+                      <p className="mx-2">
                         {video?.snippet?.description}
                       </p>
                     </div>
@@ -221,12 +222,12 @@ const Watch = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className="text-white bg-black opacity-25 p-4 mt-4 rounded-lg">
+                  <div className="text-white bg-black opacity-25 p-2 mt-1 rounded-lg text-[10px] 2xl:text-[14px] 2xl:mt-4 2xl:p-4">
                     <div className="flex">
-                      <h2 className="text-white font-semibold text-sm mx-2">
+                      <h2 className="text-white font-semibold mx-2 ]">
                         {formatViews(video?.statistics?.viewCount)} views
                       </h2>
-                      <h2 className="text-white font-semibold text-sm">
+                      <h2 className="text-white font-semibold">
                         {formattedDate(video?.snippet?.publishedAt)}
                       </h2>
                     </div>
@@ -238,7 +239,7 @@ const Watch = () => {
                       ))}
                     </div>
                     <div>
-                      <p className="mx-2 text-sm">
+                      <p className="mx-2">
                         {video?.snippet?.description.substring(0, 100)}...
                       </p>
                     </div>
@@ -263,7 +264,7 @@ const Watch = () => {
               <Live />
             </div>
           )}{" "}
-          <h2 className="text-white text-lg font-semibold mb-3">Up Next</h2>
+          <h2 className="text-white text-md font-semibold mb-3 2xl:text-lg">Up Next</h2>
           <div className="flex flex-col space-y-4 overflow-y-auto">
             <RealatedVideos />
           </div>

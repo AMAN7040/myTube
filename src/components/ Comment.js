@@ -13,24 +13,24 @@ const CommentItem = React.memo(({ comment }) => {
   );
 
   return (
-    <li className="flex my-3 mx-3">
-      <div className="mx-2 my-1">
+    <li className="flex my-1 mx-1 2xl:my-3 2xl:mx-3">
+      <div className="mx-4 my-1 2xl:mx-2">
         <img
-          className="rounded-full h-10 w-10 bg-cover mx-2"
+          className="rounded-full h-7 w-7 bg-cover mx-3 2xl:h-10 2xl:w-10 2xl:mx-2"
           src={comment.snippet.topLevelComment.snippet.authorProfileImageUrl}
           alt="profileImg"
         />
       </div>
       <div>
         <p>
-          <strong className="text-sm">
+          <strong className="text-xs 2xl:text-sm">
             {comment.snippet.topLevelComment.snippet.authorDisplayName}{" "}
             <span className="text-xs text-gray-400">
               {formattedDate}
             </span>
           </strong>
         </p>
-        <p className="mx-5 my-1 text-sm">
+        <p className="mx-1 my-2 text-[10px] 2xl:mx-5 2xl:text-[15px]">
           {comment.snippet.topLevelComment.snippet.textDisplay}
         </p>
       </div>
@@ -44,7 +44,7 @@ const Comment = () => {
   const { loading, error, fetchComments } = useComment(video?.id, pageToken);
 
   return (
-    <div className="text-white mx-3 my-4 text-md">
+    <div className="text-white mx-1 my-2 text-sm 2xl:mx-3 2xl:my-4 2xl:text-md">
       {loading && <p>Loading comments...</p>}
       {error && <p>Error: {error}</p>}
       <ul>
@@ -53,7 +53,7 @@ const Comment = () => {
         ))}
       </ul>
       {pageToken && !loading && (
-        <button className="text-sm mx-2" onClick={() => fetchComments(pageToken)}>
+        <button className="text-xs mx-1 2xl:mx-2 2xl:text-sm" onClick={() => fetchComments(pageToken)}>
           Load More Comments
         </button>
       )}
