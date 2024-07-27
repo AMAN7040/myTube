@@ -14,6 +14,7 @@ const ChannelScreen = () => {
   const { channelDetails, channelVideos } = useSelector(
     (store) => store.channel
   );
+  const user = useSelector((store) => store.user.userInfo);
 
   const userSubscribers = useSelector(
     (store) => store.subscribers.userSubscribers
@@ -87,7 +88,7 @@ const ChannelScreen = () => {
               </button>
             </div>
           )}
-          <div
+          {user && (<div
             className={` text-white text-center w-[35%]  border border-gray-300 rounded-full px-2 py-1 my-2 2xl:px-4 2xl:w-[20%] 2xl:py-1 2xl:my-3 cursor-pointer ${
               isSubscribed ? "bg-red-600" : "bg-black"
             } `}
@@ -97,7 +98,7 @@ const ChannelScreen = () => {
                 ? "Unsubscribe"
                 : "Subscribe"}
             </div>
-          </div>
+          </div>)}
         </div>
       </div>      
       <div className="mx-auto grid grid-cols-1 2xl:grid-cols-4">
