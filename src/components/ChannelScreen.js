@@ -39,14 +39,14 @@ const ChannelScreen = () => {
   return (
     <div
       className={`flex flex-col mt-20 bg-transparent ${
-        isSidebarOpen ? "ml-[15rem]" : "ml-[6rem]"
+        isSidebarOpen ? "ml-[5rem]" : "ml-[2rem] 2xl:ml-[6rem]"
       } h-full w-full overflow-hidden`}
     >
       <div className="flex justify-center mb-7">
         <img
           src={channelDetails?.snippet?.thumbnails?.high?.url}
           alt="channel_bg"
-          className="w-[60vw] h-[20vh] rounded-lg opacity-70 "
+          className="w-[65vw] h-[15vh] 2xl:w-[60vw] 2xl:h-[20vh] rounded-lg opacity-70 "
         />
       </div>
       <div className="flex ml-[18%]">
