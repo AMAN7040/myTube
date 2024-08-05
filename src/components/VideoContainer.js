@@ -28,7 +28,7 @@ const VideoContainer = () => {
   return (
     <div
       className={`grid pl-10 ${
-        isBarOpen ? "grid-cols-1 md:grid-cols-2 2xl:grid-cols-3" : "grid-cols-1 md:grid-cols-2 2xl:grid-cols-4"
+        isBarOpen ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
       } bg-transparent w-full`}
     >
       {loading && <Shimmer isBarOpen={isBarOpen} />}

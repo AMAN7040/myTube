@@ -88,13 +88,13 @@ const Watch = () => {
 
   return (
     <div
-      className={`2xl:flex 2xl:flex-col mt-20 bg-transparent ${
+      className={`lg:flex lg:flex-col 2xl:flex 2xl:flex-col mt-20 bg-transparent ${
         isSidebarOpen ? "ml-[8rem] md:ml-[11rem] 2xl:ml-[17rem]" : "ml-[3rem] md:ml-[4rem] 2xl:ml-[7rem] "
       } h-full w-full overflow-hidden`}
     >
-      <div className="2xl:flex">
-        <div className="w-[90%] 2xl:w-[75%] h-full">
-          <div className="h-[30vh] md:h-[50vh] 2xl:h-[80vh] rounded-md">
+      <div className="lg:flex 2xl:flex">
+        <div className="w-[90%] lg:w-[70%] 2xl:w-[75%] h-full">
+          <div className="h-[30vh] md:h-[50vh] lg:h-[40vh] 2xl:h-[80vh] rounded-md">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${videoId}`}
               controls
@@ -105,10 +105,10 @@ const Watch = () => {
           </div>
           {video && (
             <div>
-              <div className="flex flex-wrap md:flex-nowrap 2xl:justify-between">
+              <div className="flex flex-wrap md:flex-nowrap lg:justify-between 2xl:justify-between">
                 <div>
-                  <div className="py-3 2xl:py-2">
-                    <h1 className="text-sm font-bold text-white md:text-md 2xl:text-lg">
+                  <div className="py-3 lg:py-3 2xl:py-2">
+                    <h1 className="text-sm font-bold text-white md:text-md lg:text-lg 2xl:text-lg">
                       {video?.snippet?.title}
                     </h1>
                   </div>
@@ -126,11 +126,11 @@ const Watch = () => {
                       </div>
                       <div className="px-5 py-1">
                         <Link to={`/channel?c=${video?.snippet?.channelId}`}>
-                          <h2 className="text-white font-semibold text-sm md:text-lg 2xl:text-xl">
+                          <h2 className="text-white font-semibold text-sm md:text-lg lg:text-lg 2xl:text-xl">
                             {video?.snippet?.channelTitle}
                           </h2>
                         </Link>
-                        <p className="text-gray-400 text-xs 2xl:my-1">
+                        <p className="text-gray-400 text-xs lg:my-1 2xl:my-1">
                           {formatSubscribers(
                             subscriptionDetail?.statistics?.subscriberCount
                           )}
@@ -139,12 +139,12 @@ const Watch = () => {
                     </div>
                     {user && (
                       <div
-                        className={` text-white border border-gray-300 rounded-full px-2 py-2 mx-1 my-3 md:px-3 md:mt-1 md:my-2 2xl:px-5 2xl:mx-6 2xl:my-3 ${
+                        className={` text-white border border-gray-300 rounded-full px-2 py-2 mx-1 my-3 md:px-3 md:mt-1 md:my-2 lg:px-3 lg:mx-1 lg:my-2 2xl:px-5 2xl:mx-6 2xl:my-3 ${
                           isSubscribed ? "bg-red-600" : "bg-black"
                         } `}
                       >
                         <div
-                          className="text-xs 2xl:text-lg font-semibold cursor-pointer"
+                          className="text-xs lg:text-md 2xl:text-lg font-semibold cursor-pointer"
                           onClick={handleSubscribe}
                         >
                           {userSubscribers.some(
@@ -160,7 +160,7 @@ const Watch = () => {
                 {user && (
                   <div className="flex">
                     <div
-                      className={`text-white border border-gray-300 rounded-full text-xs px-2 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg cursor-pointer ${
+                      className={`text-white border border-gray-300 rounded-full text-xs px-2 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 lg:px-4 lg:py-2 lg:mx-2 lg:my-20 lg:mt-28 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg cursor-pointer ${
                         isLiked
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
@@ -171,14 +171,14 @@ const Watch = () => {
                       {formatViews(video?.statistics?.likeCount)}
                     </div>
                     <div
-                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full text-xs px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
+                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full text-xs px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 lg:px-4 lg:py-1 lg:mx-4 lg:my-20 lg:mt-28 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
                       onClick={handleDislike}
                     >
                       Dislike{' '}
                       <FontAwesomeIcon icon={faThumbsDown} />
                     </div>
                     <div
-                      className={`text-white border text-xs border-gray-300 rounded-full px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-4 md:py-1 2xl:px-5 2xl:text-lg 2xl:py-2 2xl:mx-2 2xl:my-12 cursor-pointer ${
+                      className={`text-white border text-xs border-gray-300 rounded-full px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-4 md:py-1 lg:px-4 lg:py-1 lg:mx-2 lg:my-20 lg:mt-28 2xl:px-5 2xl:text-lg 2xl:py-2 2xl:mx-2 2xl:my-12 cursor-pointer ${
                         isSaved
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
@@ -193,7 +193,7 @@ const Watch = () => {
               </div>
               <div>
                 {isDescriptionExpanded ? (
-                  <div className="text-white bg-black opacity-25 p-4 mt-4 rounded-lg text-[10px] md:text-[12px] 2xl:text-[14px]">
+                  <div className="text-white bg-black opacity-25 p-4 mt-4 rounded-lg text-[10px] md:text-[12px] lg:text-[13px] lg:-mt-10 2xl:text-[14px]">
                     <div className="flex">
                       <h2 className="text-white font-semibold mx-2">
                         {formatViews(video?.statistics?.viewCount)} views
@@ -222,7 +222,7 @@ const Watch = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className="text-white bg-black opacity-25 p-2 mt-1 rounded-lg text-[10px] md:text-[12px] 2xl:text-[14px] 2xl:mt-4 2xl:p-4">
+                  <div className="text-white bg-black opacity-25 p-2 mt-1 rounded-lg text-[10px] md:text-[12px] lg:text-[13px] lg:-mt-10 2xl:text-[14px] 2xl:mt-4 2xl:p-4">
                     <div className="flex">
                       <h2 className="text-white font-semibold mx-2 ]">
                         {formatViews(video?.statistics?.viewCount)} views
@@ -258,7 +258,7 @@ const Watch = () => {
             </div>
           )}
         </div>
-        <div className="2xl:w-[25%] bg-transparent p-4 mx-6 h-full">
+        <div className="lg:w-[35%] 2xl:w-[25%] bg-transparent p-4 mx-6 h-full">
           {video?.snippet?.liveBroadcastContent === "live" && (
             <div className="border border-gray-400 rounded-xl mb-3 ">
               <Live />

@@ -1,4 +1,4 @@
-export const YT_VIDEO_API = 'https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&type=video&maxResults=50&regionCode=IN&key=' + process.env.REACT_APP_API_KEY + '&videoCategoryId=';
+export const YT_VIDEO_API = 'https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&type=video&maxResults=20&regionCode=IN&key=' + process.env.REACT_APP_API_KEY + '&videoCategoryId=';
 
 export const YT_SEARCH = 'http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=';
 

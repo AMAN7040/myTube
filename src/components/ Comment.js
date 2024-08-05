@@ -44,7 +44,7 @@ const Comment = () => {
   const { loading, error, fetchComments } = useComment(video?.id, pageToken);
 
   return (
-    <div className="text-white mx-1 my-2 text-sm 2xl:mx-3 2xl:my-4 2xl:text-md">
+    <div className="text-white mx-1 my-2 text-sm lg:mx-3 lg:my-4 lg:text-lg 2xl:mx-3 2xl:my-4 2xl:text-md">
       {loading && <p>Loading comments...</p>}
       {error && <p>Error: {error}</p>}
       <ul>
