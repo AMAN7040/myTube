@@ -28,7 +28,7 @@ const Login = () => {
       style={{ backgroundColor: "#141414" }}
       className="text-white flex justify-center items-center w-full h-screen"
     >
-      <div className="bg-white text-black w-1/4 h-[50%] rounded-lg border-4 border-red-500">
+      <div className="bg-white text-black w-3/4 md:w-2/4 2xl:w-1/4 h-[50%] rounded-lg border-4 border-red-500">
         {error && <p className="text-red-500 text-center">{error.message}</p>}
         <h1 className="text-center font-bold text-xl p-5 m-5">Login Page</h1>
         <p className="text-center mt-1 mb-2">

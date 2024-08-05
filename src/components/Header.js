@@ -69,7 +69,7 @@ const Header = () => {
       <div className="flex col-span-2">
         <FontAwesomeIcon
           icon={faBars}
-          className="text-white mx-2 my-1 p-1 text-md font-light cursor-pointer 2xl:mx-7 2xl:my-4 2xl:text-xl"
+          className="text-white mx-2 my-1 p-1 text-md font-light cursor-pointer md:mx-5 2xl:mx-7 2xl:my-4 2xl:text-xl"
           onClick={() => handleSideBar()}
         />
         <h2 className="text-white font-medium text-md mx-1 flex items-center 2xl:text-xl 2xl:mx-16">
@@ -78,7 +78,7 @@ const Header = () => {
             icon={faYoutube}
             style={{ color: "#ff0000" }}
           />
-          <span className="hidden 2xl:block">MyTube</span>
+          <span className="hidden md:block 2xl:block">MyTube</span>
         </h2>
       </div>
       <div className="col-span-10 flex justify-center items-center">
@@ -101,7 +101,7 @@ const Header = () => {
         </button>
         {toggleSuggestion && suggestions && (
           <div
-            className="absolute mt-[30rem] text-white rounded-lg border shadow-lg z-20 w-[14rem] -ml-[2rem] 2xl:-ml-[3rem] py-2 2xl:w-[37rem] 2xl:mt-[29rem]"
+            className="absolute mt-[30rem] text-white rounded-lg border shadow-lg z-20 w-[14rem] -ml-[2rem] md:-ml-[2rem] md:w-[24rem] md:mt-[29rem]  2xl:-ml-[3rem] py-2 2xl:w-[37rem] 2xl:mt-[29rem]"
             style={{ backgroundColor: "#191a19", borderColor: "#FFFFFF14" }}
           >
             {suggestions.map((suggestion) => (

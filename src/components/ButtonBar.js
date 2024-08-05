@@ -32,6 +32,13 @@ const ButtonBar = () => {
         },
       },
       {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+        },
+      },
+      {
         breakpoint: 600,
         settings: {
           slidesToShow: 4,
@@ -51,7 +58,7 @@ const ButtonBar = () => {
   if (!category) return null;
 
   return (
-    <div className="px-12 py-2 2xl:px-10 2xl:py-3 overflow-visible text-white bg-transparent  ">
+    <div className="px-12 py-2 md:px-10 2xl:px-10 2xl:py-3 overflow-visible text-white bg-transparent  ">
       <Slider {...settings}>
         <div className="px-1 pt-3 2xl:px-2 text-xs 2xl:text-sm">
           <button
