@@ -29,17 +29,19 @@ const LikedVideo = () => {
     return (
       <div
       className={`flex mt-20 bg-transparent ${
-        isSidebarOpen ? "ml-[8rem] 2xl:ml-[17rem]" : "ml-[3rem] 2xl:ml-[6rem]"
+        isSidebarOpen
+          ? "ml-[8rem] lg:ml-[11rem] 2xl:ml-[17rem]"
+          : "ml-[3rem] lg:ml-[4rem] 2xl:ml-[6rem]"
       } h-screen w-full`}
       >
         <div className="w-1/5 bg-gradient-to-b from-red-400 rounded-xl">
           <img
-           className="rounded-full w-1/2 mx-auto my-2 2xl:my-5"
+           className="rounded-full w-1/2 mx-auto my-2 lg:my-4 2xl:my-5"
             src={user?.photoUrl}
             alt="useImg"
           />
-          <h1 className="font-bold text-xs text-center my-2 2xl:text-3xl 2xl:my-5">Liked Videos</h1>
-          <p className="text-black font-semibold text-center my-2 text-xs 2xl:my-5 2xl:text-2xl">
+          <h1 className="font-bold text-xs text-center my-2 lg:text-xl 2xl:text-3xl 2xl:my-5">Liked Videos</h1>
+          <p className="text-black font-semibold text-center my-2 text-xs lg:text-md 2xl:my-5 2xl:text-2xl">
             {user.displayName}
             {"  .  "} Videos -{likedVideos.length}
           </p>
@@ -56,16 +58,18 @@ const LikedVideo = () => {
   return (
     <div
     className={`flex mt-20 bg-transparent ${
-      isSidebarOpen ? "ml-[8rem] 2xl:ml-[17rem]" : "ml-[3rem] 2xl:ml-[6rem]"
+      isSidebarOpen
+        ? "ml-[8rem] lg:ml-[11rem] 2xl:ml-[17rem]"
+        : "ml-[3rem] lg:ml-[4rem] 2xl:ml-[6rem]"
     } h-screen w-full`}
     >
       <div className="w-1/5 bg-gradient-to-b from-red-400 rounded-xl">
         <img
-          className="rounded-full w-1/2 mx-auto my-2 2xl:my-5"
+          className="rounded-full w-1/2 mx-auto my-2 lg:my-4 2xl:my-5"
           src={user?.photoUrl}
           alt="useImg"
         />
-        <h1 className="font-bold text-xs text-center my-2 2xl:text-3xl 2xl:my-5">Liked Videos</h1>
+        <h1 className="font-bold text-xs text-center my-2 lg:text-xl 2xl:text-3xl 2xl:my-5">Liked Videos</h1>
         <p className="text-black font-semibold text-center my-2 text-xs 2xl:my-5 2xl:text-2xl">
           {user.displayName}
           {"  .  "} Videos -{likedVideos.length}
@@ -75,7 +79,7 @@ const LikedVideo = () => {
         {likedVideos &&
           likedVideos.map((video) => (
             <div className="2xl:flex">
-              <div className="w-[100%] mx-1 my-1 2xl:w-[30%] 2xl:mx-10 2xl:my-5">
+              <div className="w-[100%] mx-1 my-1 lg:w-[50%] lg:mx-5  lg:my-5 2xl:w-[30%]  2xl:mx-10 2xl:my-5">
                 <img
                   className="rounded-xl mx-3 2xl:mx-5"
                   src={video?.snippet?.thumbnails?.medium?.url}
@@ -84,8 +88,8 @@ const LikedVideo = () => {
               </div>
               <div className="my-1 w-full 2xl:my-5">
                 <div className="flex justify-between">
-                <div className="text-white mx-3 text-xs my-1 2xl:text-lg 2xl:my-2">{video?.snippet?.title}</div>
-                <div className="my-1 mx-0 relative right-0 2xl:my-2 2xl:mx-5 2xl:right-5">
+                <div className="text-white mx-3 text-xs my-1 lg:text-[13px] lg:mx-8 2xl:text-lg 2xl:my-2">{video?.snippet?.title}</div>
+                <div className="my-1 mx-0 relative right-0 lg:mx-3 2xl:my-2 2xl:mx-5 2xl:right-5">
                     <button
                       onClick={() => toggleDropdown(video.id)}
                       className="text-white"
@@ -107,7 +111,7 @@ const LikedVideo = () => {
                     )}
                   </div>
                 </div>
-                <div className="flex flex-wrap my-2 mx-2 text-[10px] 2xl:my-2 2xl:text-sm">
+                <div className="flex flex-wrap my-2 mx-2 text-[10px] lg:my-2 2xl:my-2 lg:mx-7 lg:text-[12px] 2xl:text-sm">
                   <h2 className="text-gray-400 mx-1">
                     {video?.snippet?.channelTitle}
                     {" . "}

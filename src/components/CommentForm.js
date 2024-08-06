@@ -40,7 +40,7 @@ const CommentForm = () => {
         <div className="mr-2 my-3 2xl:mr-5 2xl:my-4">
           {user ? (
             <img
-              className="h-6 w-6 rounded-full 2xl:h-8 2xl:w-8"
+              className="h-6 w-6 rounded-full lg:h-7 lg:w-7 2xl:h-8 2xl:w-8"
               src={user.photoUrl}
               alt="userImg"
             />

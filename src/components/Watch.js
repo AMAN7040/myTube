@@ -93,8 +93,8 @@ const Watch = () => {
       } h-full w-full overflow-hidden`}
     >
       <div className="lg:flex 2xl:flex">
-        <div className="w-[90%] lg:w-[70%] 2xl:w-[75%] h-full">
-          <div className="h-[30vh] md:h-[50vh] lg:h-[40vh] 2xl:h-[80vh] rounded-md">
+        <div className="w-[90%] lg:w-[65%] 2xl:w-[75%] h-full">
+          <div className="h-[30vh] md:h-[50vh] lg:h-[50vh] 2xl:h-[80vh] rounded-md">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${videoId}`}
               controls
@@ -139,7 +139,7 @@ const Watch = () => {
                     </div>
                     {user && (
                       <div
-                        className={` text-white border border-gray-300 rounded-full px-2 py-2 mx-1 my-3 md:px-3 md:mt-1 md:my-2 lg:px-3 lg:mx-1 lg:my-2 2xl:px-5 2xl:mx-6 2xl:my-3 ${
+                        className={` text-white border border-gray-300 rounded-full px-2 py-2 mx-1 my-3 md:px-3 md:mt-1 md:my-2 lg:px-3 lg:mx-1 lg:my-3 lg:py-3 2xl:px-5 2xl:mx-6 2xl:my-3 ${
                           isSubscribed ? "bg-red-600" : "bg-black"
                         } `}
                       >
@@ -160,7 +160,7 @@ const Watch = () => {
                 {user && (
                   <div className="flex">
                     <div
-                      className={`text-white border border-gray-300 rounded-full text-xs px-2 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 lg:px-4 lg:py-2 lg:mx-2 lg:my-20 lg:mt-28 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg cursor-pointer ${
+                      className={`text-white border border-gray-300 rounded-full text-xs px-2 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 lg:px-5 lg:py-2 lg:mx-1 lg:my-20 lg:mt-28 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg cursor-pointer ${
                         isLiked
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
@@ -171,14 +171,14 @@ const Watch = () => {
                       {formatViews(video?.statistics?.likeCount)}
                     </div>
                     <div
-                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full text-xs px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 lg:px-4 lg:py-1 lg:mx-4 lg:my-20 lg:mt-28 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
+                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full text-xs px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 lg:px-4 lg:py-1 lg:mx-2 lg:my-20 lg:mt-28 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
                       onClick={handleDislike}
                     >
                       Dislike{' '}
                       <FontAwesomeIcon icon={faThumbsDown} />
                     </div>
                     <div
-                      className={`text-white border text-xs border-gray-300 rounded-full px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-4 md:py-1 lg:px-4 lg:py-1 lg:mx-2 lg:my-20 lg:mt-28 2xl:px-5 2xl:text-lg 2xl:py-2 2xl:mx-2 2xl:my-12 cursor-pointer ${
+                      className={`text-white border text-xs border-gray-300 rounded-full px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-4 md:py-1 lg:px-5 lg:py-1 lg:mx-1 lg:my-20 lg:mt-28 2xl:px-5 2xl:text-lg 2xl:py-2 2xl:mx-2 2xl:my-12 cursor-pointer ${
                         isSaved
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
@@ -258,13 +258,13 @@ const Watch = () => {
             </div>
           )}
         </div>
-        <div className="lg:w-[35%] 2xl:w-[25%] bg-transparent p-4 mx-6 h-full">
+        <div className="lg:w-[35%] 2xl:w-[25%] bg-transparent p-4 mx-6 lg:mx-4 h-full">
           {video?.snippet?.liveBroadcastContent === "live" && (
             <div className="border border-gray-400 rounded-xl mb-3 ">
               <Live />
             </div>
           )}{" "}
-          <h2 className="text-white text-md font-semibold mb-3 2xl:text-lg">Up Next</h2>
+          <h2 className="text-white text-md font-semibold mb-3 lg:text-lg 2xl:text-lg">Up Next</h2>
           <div className="flex flex-col space-y-4 overflow-y-auto">
             <RealatedVideos />
           </div>

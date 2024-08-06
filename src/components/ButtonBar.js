@@ -32,6 +32,14 @@ const ButtonBar = () => {
         },
       },
       {
+        breakpoint: 1030,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 2,
+          infinite: true,
+        },
+      },
+      {
         breakpoint: 800,
         settings: {
           slidesToShow: 4,

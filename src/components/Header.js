@@ -101,7 +101,7 @@ const Header = () => {
         </button>
         {toggleSuggestion && suggestions && (
           <div
-            className="absolute mt-[30rem] text-white rounded-lg border shadow-lg z-20 w-[14rem] -ml-[2rem] md:-ml-[2rem] md:w-[24rem] md:mt-[29rem]  2xl:-ml-[3rem] py-2 2xl:w-[37rem] 2xl:mt-[29rem]"
+            className="absolute mt-[30rem] text-white rounded-lg border shadow-lg z-20 w-[14rem] -ml-[2rem] md:-ml-[2rem] md:w-[24rem] md:mt-[29rem] lg:-ml-[2rem] lg:w-[32rem] 2xl:-ml-[3rem] py-2 2xl:w-[37rem] 2xl:mt-[29rem]"
             style={{ backgroundColor: "#191a19", borderColor: "#FFFFFF14" }}
           >
             {suggestions.map((suggestion) => (
