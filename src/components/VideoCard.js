@@ -16,7 +16,7 @@ const VideoCard = ({ item }) => {
   return (
     <div
       className={`${
-        isBarOpen ? "w-[260px] md:w-[280px] lg:w-[240px] 2xl:w-[470px] " : "w-[320px] md:w-[320px] lg:w-[270px] 2xl:w-[400px]"
+        isBarOpen ? "w-[240px] md:w-[280px] lg:w-[240px] 2xl:w-[470px] " : "w-[290px] md:w-[320px] lg:w-[270px] 2xl:w-[400px]"
       } my-1 2xl:my-1 shadow-lg bg-transparent `}
     >
       <img
@@ -25,10 +25,10 @@ const VideoCard = ({ item }) => {
         className="w-full rounded-xl"
       />
       <div className="px-2 py-2 2xl:px-5">
-        <div className="font-bold text-md text-white mb-2">{title}</div>
+        <div className="font-bold text-[13px] md:text-[15px] lg:text-[16px] 2xl:text-[16px] text-white mb-2">{title}</div>
         <div className="flex mb-2 2xl:mb-4">
           {/* <img src={channelPhotoUrl} alt="channel" className="w-10 h-10 rounded-full mr-2" /> */}
-          <div className="text-sm">
+          <div className="text-sm lg:text-sm 2xl:text-sm">
             <p className="text-gray-500 leading-none mb-1">{channelTitle}</p>
             <p className="text-gray-500">
               {formatViews(viewCount)} views •{" "}

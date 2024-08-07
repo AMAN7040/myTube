@@ -80,7 +80,7 @@ const ButtonBar = () => {
         {category.map((item) => (
           <div key={item.snippet.title} className="px-1 pt-3 2xl:px-2 text-xs 2xl:text-sm">
             <button
-              className="py-1 px-1 2xl:px-2 w-full border border-gray-700 rounded-lg shadow-md text-white"
+              className="py-1 px-0.5 md:px-1 lg:px-1 2xl:px-2 w-full border border-gray-700 rounded-lg shadow-md text-white"
               style={{ backgroundColor: "#FFFFFF1A" }}
               onClick={()=> handlecategory(item.id)}
             >

@@ -89,12 +89,12 @@ const Watch = () => {
   return (
     <div
       className={`lg:flex lg:flex-col 2xl:flex 2xl:flex-col mt-20 bg-transparent ${
-        isSidebarOpen ? "ml-[8rem] md:ml-[11rem] 2xl:ml-[17rem]" : "ml-[3rem] md:ml-[4rem] 2xl:ml-[7rem] "
+        isSidebarOpen ? "ml-[6.9rem] md:ml-[11rem] 2xl:ml-[17rem]" : "ml-[1.2rem] md:ml-[4rem] 2xl:ml-[7rem] "
       } h-full w-full overflow-hidden`}
     >
       <div className="lg:flex 2xl:flex">
-        <div className="w-[90%] lg:w-[65%] 2xl:w-[75%] h-full">
-          <div className="h-[30vh] md:h-[50vh] lg:h-[50vh] 2xl:h-[80vh] rounded-md">
+        <div className="w-[95%] lg:w-[65%] 2xl:w-[75%] h-full">
+          <div className="h-[25vh] md:h-[50vh] lg:h-[50vh] 2xl:h-[80vh]">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${videoId}`}
               controls
@@ -130,7 +130,7 @@ const Watch = () => {
                             {video?.snippet?.channelTitle}
                           </h2>
                         </Link>
-                        <p className="text-gray-400 text-xs lg:my-1 2xl:my-1">
+                        <p className="text-gray-400 text-[11px] lg:text-xs 2xl:text-xs lg:my-1 2xl:my-1">
                           {formatSubscribers(
                             subscriptionDetail?.statistics?.subscriberCount
                           )}
@@ -144,7 +144,7 @@ const Watch = () => {
                         } `}
                       >
                         <div
-                          className="text-xs lg:text-md 2xl:text-lg font-semibold cursor-pointer"
+                          className="text-[10px] md:text-xs lg:text-md 2xl:text-lg font-semibold cursor-pointer"
                           onClick={handleSubscribe}
                         >
                           {userSubscribers.some(
@@ -174,7 +174,7 @@ const Watch = () => {
                       className="text-white bg-black opacity-25 border border-gray-300 rounded-full text-xs px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 lg:px-4 lg:py-1 lg:mx-2 lg:my-20 lg:mt-28 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
                       onClick={handleDislike}
                     >
-                      Dislike{' '}
+                      <span className="hidden md:block lg:block 2xl:block">Dislike{' '}</span>
                       <FontAwesomeIcon icon={faThumbsDown} />
                     </div>
                     <div
@@ -233,14 +233,14 @@ const Watch = () => {
                     </div>
                     <div>
                       {video?.snippet?.tags?.map((item) => (
-                        <p key={item} className="inline-block mr-2 mx-2">
+                        <p key={item} className="inline-block mr-2 mx-1">
                           #{item}
                         </p>
                       ))}
                     </div>
                     <div>
                       <p className="mx-2">
-                        {video?.snippet?.description.substring(0, 100)}...
+                        {video?.snippet?.description.substring(0, 30)}...
                       </p>
                     </div>
                     <button

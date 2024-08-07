@@ -44,7 +44,7 @@ const SideBar = () => {
   };
 
   return !isBarOpen ? (
-    <div className="bg-transparent py-8 w-10 h-screen top-0 mt-[3rem] left-0 fixed md:w-20 2xl:py-10 2xl:w-28">
+    <div className="hidden md:block lg:block 2xl:block bg-transparent py-8 w-10 h-screen top-0 mt-[3rem] left-0 fixed md:w-20 2xl:py-10 2xl:w-28">
       <Link to={"/"}>
         <div className="list-none font-semibold cursor-pointer mb-7 text-white">
           <li className="text-lg px-[9px] w-1/4 md:px-5 md:py-1 2xl:text-xl 2xl:px-7 2xl:py-1">
@@ -65,13 +65,13 @@ const SideBar = () => {
       <Link to={"/"}>
         <div className="flex items-center mb-4 cursor-pointer text-white">
           <FontAwesomeIcon className="text-lg px-[9px] w-1/4 md:px-5 md:py-2 2xl:text-xl 2xl:px-4 2xl:py-2" icon={faHomeAlt} />
-          <h4 className="font-medium text-[14px] pl-2 w-3/4 2xl:text-[15px] 2xl:pl-4">Home</h4>
+          <h4 className="font-medium text-[12px] md:text-[14px] lg:text-[14px] pl-0 md:pl-2 lg:pl-2 w-3/4 2xl:text-[15px] 2xl:pl-4">Home</h4>
         </div>
       </Link>
 
       <hr className="mx-1 my-1 mb-5 2xl:mx-4 2xl:mb-4 text-white"></hr>
       <div className="flex items-center mb-6">
-        <h3 className="text-white ml-2 font-medium text-lg md:pl-3 2xl:ml-7">You</h3>
+        <h3 className="text-white ml-2 font-medium text-md lg:text-lg 2xl:text-lg md:pl-3 2xl:ml-7">You</h3>
         <FontAwesomeIcon
           className="text-md pl-4 2xl:pl-10 text-white"
           icon={faGreaterThan}
@@ -96,7 +96,7 @@ const SideBar = () => {
                 className="text-xl mx-1 w-1/4 md:mx-2 2xl:mx-3"
                 icon={faSquareCheck}
               />
-              <h4 className="font-medium text-[12px] pl-1 w-3/4   2xl:text-[15px] 2xl:pl-4 text-white">
+              <h4 className="font-medium text-[11px] md:text-[12px] lg:text-[13px] pl-1 w-3/4   2xl:text-[15px] 2xl:pl-4 text-white">
                 Watch Later
               </h4>
             </div>
@@ -107,7 +107,7 @@ const SideBar = () => {
                 className="text-xl mx-1 w-1/4 md:mx-2 2xl:mx-3"
                 icon={faThumbsUp}
               />
-              <h4 className="font-medium text-[12px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4 text-white">
+              <h4 className="font-medium text-[11px] md:text-[12px] lg:text-[13px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4 text-white">
                 Liked Vidoes
               </h4>
             </div>
@@ -118,12 +118,12 @@ const SideBar = () => {
             onClick={() => handleSignOut()}
           >
             <FontAwesomeIcon className="text-xl mx-1 w-1/4 md:mx-2 2xl:mx-3 " icon={faSignOut} />
-            <h4 className="font-medium text-[12px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4 text-white ">Sign Out</h4>
+            <h4 className="font-medium text-[11px] md:text-[12px] lg:text-[13px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4 text-white ">Sign Out</h4>
           </div>
 
           <hr className="border-t border-white mx-1 2xl:mx-4 my-1 mb-4"></hr>
           <div>
-            <h3 className="text-white ml-2 font-medium text-[15px] md:ml-4 2xl:text-lg 2xl:ml-7 mb-4">
+            <h3 className="text-white ml-2 font-medium text-[12px] md:text-[13px] lg:text-[15px] md:ml-4 2xl:text-lg 2xl:ml-7 mb-4">
               Subscriptions
             </h3>
             {subscribers &&
@@ -140,7 +140,7 @@ const SideBar = () => {
                         alt="channelImg"
                       />
                     </div>
-                    <p className="text-white text-[10px] md:text-[12px] 2xl:text-[13px] mb-1 w-3/4">
+                    <p className="hidden md:block lg:block 2xl:block text-white text-[10px] md:text-[12px] 2xl:text-[13px] mb-1 w-3/4">
                       {subs?.snippet?.title}
                     </p>
                   </div>
@@ -154,16 +154,16 @@ const SideBar = () => {
           <Link to="/login">
             <div className="flex items-center mb-4 cursor-pointer text-white">
               <FontAwesomeIcon className="text-xl mx-1 w-1/4 md:mx-3 2xl:mx-3" icon={faSignIn} />
-              <h4 className="font-medium text-[14px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4">Login</h4>
+              <h4 className="font-medium  text-[12px] md:text-[13px] lg:text-[15px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4">Login</h4>
             </div>
           </Link>
           <div>
             {" "}
-            <h3 className="text-white ml-1 mb-4 font-medium text-sm md:ml-3 md:mb-5 md:text-md 2xl:ml-7 2xl:mb-4 2xl:text-lg">
+            <h3 className="text-white ml-1 mb-4 font-medium md:ml-3 md:mb-5  text-[13px] md:text-[13px] lg:text-[15px] 2xl:ml-7 2xl:mb-4 2xl:text-lg">
               {" "}
               Subscriptions{" "}
             </h3>{" "}
-            <p className="text-white ml-2 text-xs font-normal mb-4 md:ml-5 2xl:ml-8 2xl:text-sm">Login to see Subscriptions</p>{" "}
+            <p className="text-white ml-2  text-[10px] md:text-[13px] lg:text-[14px] font-normal mb-4 md:ml-5 2xl:ml-8 2xl:text-[15px]">Login to see Subscriptions</p>{" "}
             <hr className="border-t border-white mx-1 my-1 mb-4 2xl:mx-4 text-white font-bold"></hr>{" "}
           </div>
         </>

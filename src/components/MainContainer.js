@@ -8,7 +8,7 @@ const MainContainer = () => {
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
 
   return (
-    <div className={`flex flex-col mt-14 transition-all duration-300 bg-transparent ${isBarOpen ? 'ml-[5.3rem] md:ml-[8rem] 2xl:ml-[15rem]' : 'ml-[1.4rem] md:ml-[3rem] 2xl:ml-[6rem] '} h-[calc(100vh-3.5rem)] overflow-hidden`}>
+    <div className={`flex flex-col mt-14 transition-all duration-300 bg-transparent ${isBarOpen ? 'ml-[4.3rem] md:ml-[8rem] 2xl:ml-[15rem]' : 'ml-[0.5rem] md:ml-[3rem] 2xl:ml-[6rem] '} h-[calc(100vh-3.5rem)] overflow-hidden`}>
       <ButtonBar />
       <div className="flex-grow overflow-y-auto">
         <VideoContainer />
