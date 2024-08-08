@@ -1,16 +1,19 @@
-import React from "react";
-import Body from "./components/Body";
+import React, { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import store from "./utils/store";
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import MainContainer from "./components/MainContainer";
-import Watch from "./components/Watch";
-import Login from "./components/Login";
-import SearchPage from "./components/SearchPage";
-import ChannelScreen from "./components/ChannelScreen";
-import LikedVideo from "./components/LikedVideo";
-import SavedVideos from "./components/SavedVideos";
+import Body from "./components/Body";
+import Spinner from "./components/Spinner";
+
+// Lazy load route-based components
+const MainContainer = lazy(() => import("./components/MainContainer"));
+const Watch = lazy(() => import("./components/Watch"));
+const Login = lazy(() => import("./components/Login"));
+const SearchPage = lazy(() => import("./components/SearchPage"));
+const ChannelScreen = lazy(() => import("./components/ChannelScreen"));
+const LikedVideo = lazy(() => import("./components/LikedVideo"));
+const SavedVideos = lazy(() => import("./components/SavedVideos"));
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -20,39 +23,67 @@ function App() {
       children: [
         {
           path: "/",
-          element: <MainContainer />,
+          element: (
+            <Suspense fallback={<Spinner />}>
+              <MainContainer />
+            </Suspense>
+          ),
         },
         {
           path: "watch",
-          element: <Watch />,
+          element: (
+            <Suspense fallback={<Spinner />}>
+              <Watch />
+            </Suspense>
+          ),
         },
         {
           path: "results",
-          element: <SearchPage />,
+          element: (
+            <Suspense fallback={<Spinner />}>
+              <SearchPage />
+            </Suspense>
+          ),
         },
         {
           path: "channel",
-          element: <ChannelScreen />,
+          element: (
+            <Suspense fallback={<Spinner />}>
+              <ChannelScreen />
+            </Suspense>
+          ),
         },
         {
           path: "like",
-          element: <LikedVideo />,
+          element: (
+            <Suspense fallback={<Spinner />}>
+              <LikedVideo />
+            </Suspense>
+          ),
         },
         {
           path: "watchlater",
-          element: <SavedVideos />,
+          element: (
+            <Suspense fallback={<Spinner />}>
+              <SavedVideos />
+            </Suspense>
+          ),
         },
       ],
     },
     {
       path: "/login",
-      element: <Login />,
+      element: (
+        <Suspense fallback={<Spinner />}>
+          <Login />
+        </Suspense>
+      ),
     },
   ]);
 
   return (
     <Provider store={store}>
-      <div className="">
+      <div className="app-container">
         <RouterProvider router={appRouter} />
       </div>
     </Provider>

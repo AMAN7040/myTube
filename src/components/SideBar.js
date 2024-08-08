@@ -1,17 +1,6 @@
+import { faGreaterThan } from "@fortawesome/fontawesome-free-solid";
 import {
-  faFilm,
-  faGamepad,
-  faGreaterThan,
-  faNewspaper,
-} from "@fortawesome/fontawesome-free-solid";
-import {
-  faHistory,
   faHomeAlt,
-  faLayerGroup,
-  faMusic,
-  faPodcast,
-  faRss,
-  faShoppingBag,
   faSignIn,
   faSignOut,
   faSquareCheck,
@@ -50,28 +39,39 @@ const SideBar = () => {
           <li className="text-lg px-[9px] w-1/4 md:px-5 md:py-1 2xl:text-xl 2xl:px-7 2xl:py-1">
             <FontAwesomeIcon icon={faHomeAlt} className="text-white" />
           </li>
-          <li className="text-[11px] w-3/4 px-1 md:px-4 md:py-1 2xl:px-5 2xl:text-[14px]">Home</li>
+          <li className="text-[11px] w-3/4 px-1 md:px-4 md:py-1 2xl:px-5 2xl:text-[14px]">
+            Home
+          </li>
         </div>
       </Link>
       <div className="list-none font-semibold cursor-pointer text-white">
         <li className="text-lg px-[9px] md:px-5 md:py-1 2xl:text-xl 2xl:px-7 2xl:py-1 ">
           <FontAwesomeIcon icon={faUser} />
         </li>
-        <li className="text-[11px] w-3/4 px-[6px] md:px-4 md:py-1 2xl:px-6 2xl:text-[14px]">You</li>
+        <li className="text-[11px] w-3/4 px-[6px] md:px-4 md:py-1 2xl:px-6 2xl:text-[14px]">
+          You
+        </li>
       </div>
     </div>
   ) : (
     <div className="bg-transparent py-8 w-28 h-screen top-0 mt-[3rem] left-0 fixed overflow-y-auto md:w-36 2xl:py-10 2xl:w-64">
       <Link to={"/"}>
         <div className="flex items-center mb-4 cursor-pointer text-white">
-          <FontAwesomeIcon className="text-lg px-[9px] w-1/4 md:px-5 md:py-2 2xl:text-xl 2xl:px-4 2xl:py-2" icon={faHomeAlt} />
-          <h4 className="font-medium text-[12px] md:text-[14px] lg:text-[14px] pl-0 md:pl-2 lg:pl-2 w-3/4 2xl:text-[15px] 2xl:pl-4">Home</h4>
+          <FontAwesomeIcon
+            className="text-lg px-[9px] w-1/4 md:px-5 md:py-2 2xl:text-xl 2xl:px-4 2xl:py-2"
+            icon={faHomeAlt}
+          />
+          <h4 className="font-medium text-[12px] md:text-[14px] lg:text-[14px] pl-0 md:pl-2 lg:pl-2 w-3/4 2xl:text-[15px] 2xl:pl-4">
+            Home
+          </h4>
         </div>
       </Link>
 
       <hr className="mx-1 my-1 mb-5 2xl:mx-4 2xl:mb-4 text-white"></hr>
       <div className="flex items-center mb-6">
-        <h3 className="text-white ml-2 font-medium text-md lg:text-lg 2xl:text-lg md:pl-3 2xl:ml-7">You</h3>
+        <h3 className="text-white ml-2 font-medium text-md lg:text-lg 2xl:text-lg md:pl-3 2xl:ml-7">
+          You
+        </h3>
         <FontAwesomeIcon
           className="text-md pl-4 2xl:pl-10 text-white"
           icon={faGreaterThan}
@@ -79,17 +79,6 @@ const SideBar = () => {
       </div>
       {user ? (
         <div>
-          {/* <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faHistory} />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">History</h4>
-          </div> */}
-          {/* <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon
-              className="text-xl mx-3 w-1/4"
-              icon={faLayerGroup}
-            />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">Playlists</h4>
-          </div> */}
           <Link to={"/watchlater"}>
             <div className="flex items-center mb-4 cursor-pointer text-white">
               <FontAwesomeIcon
@@ -117,8 +106,13 @@ const SideBar = () => {
             className="flex items-center mb-8 cursor-pointer text-white"
             onClick={() => handleSignOut()}
           >
-            <FontAwesomeIcon className="text-xl mx-1 w-1/4 md:mx-2 2xl:mx-3 " icon={faSignOut} />
-            <h4 className="font-medium text-[11px] md:text-[12px] lg:text-[13px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4 text-white ">Sign Out</h4>
+            <FontAwesomeIcon
+              className="text-xl mx-1 w-1/4 md:mx-2 2xl:mx-3 "
+              icon={faSignOut}
+            />
+            <h4 className="font-medium text-[11px] md:text-[12px] lg:text-[13px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4 text-white ">
+              Sign Out
+            </h4>
           </div>
 
           <hr className="border-t border-white mx-1 2xl:mx-4 my-1 mb-4"></hr>
@@ -153,8 +147,13 @@ const SideBar = () => {
         <>
           <Link to="/login">
             <div className="flex items-center mb-4 cursor-pointer text-white">
-              <FontAwesomeIcon className="text-xl mx-1 w-1/4 md:mx-3 2xl:mx-3" icon={faSignIn} />
-              <h4 className="font-medium  text-[12px] md:text-[13px] lg:text-[15px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4">Login</h4>
+              <FontAwesomeIcon
+                className="text-xl mx-1 w-1/4 md:mx-3 2xl:mx-3"
+                icon={faSignIn}
+              />
+              <h4 className="font-medium  text-[12px] md:text-[13px] lg:text-[15px] pl-1 w-3/4 2xl:text-[15px] 2xl:pl-4">
+                Login
+              </h4>
             </div>
           </Link>
           <div>
@@ -163,53 +162,13 @@ const SideBar = () => {
               {" "}
               Subscriptions{" "}
             </h3>{" "}
-            <p className="text-white ml-2  text-[10px] md:text-[13px] lg:text-[14px] font-normal mb-4 md:ml-5 2xl:ml-8 2xl:text-[15px]">Login to see Subscriptions</p>{" "}
+            <p className="text-white ml-2  text-[10px] md:text-[13px] lg:text-[14px] font-normal mb-4 md:ml-5 2xl:ml-8 2xl:text-[15px]">
+              Login to see Subscriptions
+            </p>{" "}
             <hr className="border-t border-white mx-1 my-1 mb-4 2xl:mx-4 text-white font-bold"></hr>{" "}
           </div>
         </>
       )}
-
-      {/* <div>
-        <h3 className="text-white ml-7 mb-4 font-medium text-lg">Explore</h3>
-        <div>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faMusic} />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">Music</h4>
-          </div>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faFilm} />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">Films</h4>
-          </div>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon
-              className="text-xl mx-3 w-1/4"
-              icon={faShoppingBag}
-            />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">Shopping</h4>
-          </div>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faGamepad} />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">Gaming</h4>
-          </div>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faRss} />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">Live</h4>
-          </div>
-          <div className="flex items-center mb-4 cursor-pointer text-white">
-            <FontAwesomeIcon
-              className="text-xl mx-3 w-1/4"
-              icon={faNewspaper}
-            />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4 text-white">
-              News
-            </h4>
-          </div>
-          <div className="flex items-centermb-4 cursor-pointer text-white">
-            <FontAwesomeIcon className="text-xl mx-3 w-1/4" icon={faPodcast} />
-            <h4 className="font-medium text-[15px] pl-4 w-3/4">Podcast</h4>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };

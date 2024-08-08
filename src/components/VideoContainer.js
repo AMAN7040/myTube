@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useAllVideos from "../hooks/useAllVideos";
 import { useSelector } from "react-redux";
 import VideoCard from "./VideoCard";
@@ -24,6 +24,12 @@ const VideoContainer = () => {
 
   const videos = useSelector((store) => store.video.allVideos);
   const isBarOpen = useSelector((store) => store.sidebar.isBarOpen);
+
+  useEffect(() => {
+    if (loading) {
+      setLoading(false); // Reset loading state when API call is complete
+    }
+  }, [loading, setLoading]);
 
   return (
     <div

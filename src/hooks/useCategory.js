@@ -5,7 +5,7 @@ import { getCategory } from "../utils/videoSlice";
 
 const useCategory = () => {
   const dispatch = useDispatch(); // Get dispatch function from Redux
-  const category = useSelector((store)=> store.video.category);
+  const category = useSelector((store) => store.video.category);
 
   const fetchCategory = async () => {
     try {
@@ -22,7 +22,11 @@ const useCategory = () => {
   };
 
   useEffect(() => {
-    !category && fetchCategory();
-  }, [category]);
+    if (!category || category.length === 0) {
+      fetchCategory();
+    }
+  }, [category, dispatch]);
 };
+
 export default useCategory;
+     

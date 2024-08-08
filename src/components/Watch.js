@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -45,11 +45,11 @@ const Watch = () => {
 
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
-  const toggleDescription = () => {
-    setIsDescriptionExpanded(!isDescriptionExpanded);
-  };
+  const toggleDescription = useCallback(() => {
+    setIsDescriptionExpanded((prev) => !prev);
+  }, []);
 
-  const handleSubscribe = () => {
+  const handleSubscribe = useCallback(() => {
     const isSubscribed = userSubscribers.some(
       (ch) => ch.id === subscriptionDetail?.id
     );
@@ -58,24 +58,24 @@ const Watch = () => {
     } else {
       dispatch(removeSubscribe(subscriptionDetail));
     }
-  };
+  }, [dispatch, subscriptionDetail, userSubscribers]);
 
-  const handleLike = () => {
-    dispatch(addLike(video)); // Pass the video object to addLike action
-  };
+  const handleLike = useCallback(() => {
+    dispatch(addLike(video));
+  }, [dispatch, video]);
 
-  const handleDislike = () => {
-    dispatch(removeLike(video)); // Pass the video object to removeLike action
-  };
+  const handleDislike = useCallback(() => {
+    dispatch(removeLike(video));
+  }, [dispatch, video]);
 
-  const handleSave = () => {
+  const handleSave = useCallback(() => {
     const isSaved = savedVideos.some((v) => v.id === video?.id);
     if (!isSaved) {
-      dispatch(addSave(video)); // Add the video to saved videos
+      dispatch(addSave(video));
     } else {
-      dispatch(removeSave(video)); // Remove the video from saved videos
+      dispatch(removeSave(video));
     }
-  };
+  }, [dispatch, savedVideos, video]);
 
   const isLiked = likedVideos.some((v) => v.id === video?.id);
   const isSaved = savedVideos.some((v) => v.id === video?.id);
@@ -89,11 +89,11 @@ const Watch = () => {
   return (
     <div
       className={`lg:flex lg:flex-col 2xl:flex 2xl:flex-col mt-20 bg-transparent ${
-        isSidebarOpen ? "ml-[6.9rem] md:ml-[11rem] 2xl:ml-[17rem]" : "ml-[1.2rem] md:ml-[4rem] 2xl:ml-[7rem] "
+        isSidebarOpen ? "ml-[6.9rem] md:ml-[9rem] 2xl:ml-[17rem]" : "ml-[1.2rem] md:ml-[4rem] 2xl:ml-[7rem] "
       } h-full w-full overflow-hidden`}
     >
       <div className="lg:flex 2xl:flex">
-        <div className="w-[95%] lg:w-[65%] 2xl:w-[75%] h-full">
+        <div className="w-[95%] md:w-[97%] lg:w-[69%] 2xl:w-[75%] h-full">
           <div className="h-[25vh] md:h-[50vh] lg:h-[50vh] 2xl:h-[80vh]">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${videoId}`}
@@ -105,10 +105,10 @@ const Watch = () => {
           </div>
           {video && (
             <div>
-              <div className="flex flex-wrap md:flex-nowrap lg:justify-between 2xl:justify-between">
+              <div className="flex flex-wrap md:flex-nowrap lg:flex-nowrap lg:justify-between 2xl:justify-between">
                 <div>
                   <div className="py-3 lg:py-3 2xl:py-2">
-                    <h1 className="text-sm font-bold text-white md:text-md lg:text-lg 2xl:text-lg">
+                    <h1 className="text-sm font-bold text-white md:text-[13px] lg:text-[14px] 2xl:text-lg">
                       {video?.snippet?.title}
                     </h1>
                   </div>
@@ -124,13 +124,13 @@ const Watch = () => {
                           alt="channelImg"
                         />
                       </div>
-                      <div className="px-5 py-1">
+                      <div className="px-4 py-1">
                         <Link to={`/channel?c=${video?.snippet?.channelId}`}>
-                          <h2 className="text-white font-semibold text-sm md:text-lg lg:text-lg 2xl:text-xl">
+                          <h2 className="text-white font-semibold text-[11px] md:text-[12px] lg:text-[13px] 2xl:text-xl">
                             {video?.snippet?.channelTitle}
                           </h2>
                         </Link>
-                        <p className="text-gray-400 text-[11px] lg:text-xs 2xl:text-xs lg:my-1 2xl:my-1">
+                        <p className="text-gray-400 text-[10px] lg:text-[10px] 2xl:text-xs lg:my-1 2xl:my-1">
                           {formatSubscribers(
                             subscriptionDetail?.statistics?.subscriberCount
                           )}
@@ -139,12 +139,12 @@ const Watch = () => {
                     </div>
                     {user && (
                       <div
-                        className={` text-white border border-gray-300 rounded-full px-2 py-2 mx-1 my-3 md:px-3 md:mt-1 md:my-2 lg:px-3 lg:mx-1 lg:my-3 lg:py-3 2xl:px-5 2xl:mx-6 2xl:my-3 ${
+                        className={` text-white border border-gray-300 rounded-full px-2 py-2 mx-1 my-2 md:px-3 md:mt-1 md:py-2 md:my-3 md:text-[10px]  lg:px-2 lg:mx-0 lg:my-4 lg:py-2 2xl:px-5 2xl:mx-6 2xl:my-3 ${
                           isSubscribed ? "bg-red-600" : "bg-black"
                         } `}
                       >
                         <div
-                          className="text-[10px] md:text-xs lg:text-md 2xl:text-lg font-semibold cursor-pointer"
+                          className="text-[9px] md:text-[10px] lg:text-[11px] 2xl:text-lg font-semibold cursor-pointer"
                           onClick={handleSubscribe}
                         >
                           {userSubscribers.some(
@@ -158,34 +158,34 @@ const Watch = () => {
                   </div>
                 </div>
                 {user && (
-                  <div className="flex">
+                  <div className="flex mx-7 md:mx-0 lg:mx-0">
                     <div
-                      className={`text-white border border-gray-300 rounded-full text-xs px-2 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 lg:px-5 lg:py-2 lg:mx-1 lg:my-20 lg:mt-28 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg cursor-pointer ${
+                      className={`flex items-center text-white border border-gray-300 rounded-full text-[10px] px-2 py-2 mx-6 my-3 md:mt-12 md:mx-3 md:my-auto md:px-4 md:py-2 lg:px-4 lg:py-2 lg:mx-1 lg:my-auto lg:mt-16 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-16 2xl:text-[14px] cursor-pointer ${
                         isLiked
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
                       }`}
                       onClick={handleLike}
                     >
-                      <FontAwesomeIcon icon={faThumbsUp} />{" "}
+                      <FontAwesomeIcon className="mx-[2px]" icon={faThumbsUp} />{" "}
                       {formatViews(video?.statistics?.likeCount)}
                     </div>
                     <div
-                      className="text-white bg-black opacity-25 border border-gray-300 rounded-full text-xs px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-5 md:py-1 lg:px-4 lg:py-1 lg:mx-2 lg:my-20 lg:mt-28 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-12 2xl:text-lg hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
+                      className="text-white flex items-center bg-black opacity-25 border border-gray-300 rounded-full text-[10px] px-3 py-2 mx-4 my-3 md:mt-12  md:my-auto md:mx-3 md:px-4 md:py-2 lg:px-2 lg:py-2 lg:mx-3 lg:my-auto lg:mt-16 2xl:px-5 2xl:py-1 2xl:mx-3 2xl:my-16 2xl:text-[14px] hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
                       onClick={handleDislike}
                     >
                       <span className="hidden md:block lg:block 2xl:block">Dislike{' '}</span>
-                      <FontAwesomeIcon icon={faThumbsDown} />
+                      <FontAwesomeIcon className="mx-[2px]" icon={faThumbsDown} />
                     </div>
                     <div
-                      className={`text-white border text-xs border-gray-300 rounded-full px-3 py-3 mx-2 my-3 md:mt-16 md:mx-3 md:px-4 md:py-1 lg:px-5 lg:py-1 lg:mx-1 lg:my-20 lg:mt-28 2xl:px-5 2xl:text-lg 2xl:py-2 2xl:mx-2 2xl:my-12 cursor-pointer ${
+                      className={`text-white flex items-center border text-[10px] border-gray-300 rounded-full px-3 py-2 mx-2 my-3 md:mt-12 md:mx-3 md:px-4 md:my-auto md:py-2 lg:px-2 lg:py-2 lg:mx-1 lg:my-auto lg:mt-16 2xl:px-5 2xl:text-[14px] 2xl:py-2 2xl:mx-2 2xl:my-16 cursor-pointer ${
                         isSaved
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
                       }`}
                       onClick={handleSave}
                     >
-                      <FontAwesomeIcon icon={faSquarePlus} className="mx-1 md:mx-2 2xl:mx-2" />
+                      <FontAwesomeIcon icon={faSquarePlus} className="mx-[2px] md:mx-1 2xl:mx-2" />
                       {isSaved ? "Saved" : "Save"}
                     </div>
                   </div>
@@ -193,7 +193,7 @@ const Watch = () => {
               </div>
               <div>
                 {isDescriptionExpanded ? (
-                  <div className="text-white bg-black opacity-25 p-4 mt-4 rounded-lg text-[10px] md:text-[12px] lg:text-[13px] lg:-mt-10 2xl:text-[14px]">
+                  <div className="text-white bg-black opacity-25 p-4 mt-2 rounded-lg text-[10px] md:text-[12px] lg:text-[13px] 2xl:text-[14px]">
                     <div className="flex">
                       <h2 className="text-white font-semibold mx-2">
                         {formatViews(video?.statistics?.viewCount)} views
@@ -222,7 +222,7 @@ const Watch = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className="text-white bg-black opacity-25 p-2 mt-1 rounded-lg text-[10px] md:text-[12px] lg:text-[13px] lg:-mt-10 2xl:text-[14px] 2xl:mt-4 2xl:p-4">
+                  <div className="text-white bg-black opacity-25 p-2 mt-1 rounded-lg text-[10px] md:text-[12px] lg:text-[13px] lg:-mt-1 2xl:text-[14px] 2xl:mt-4 2xl:p-4">
                     <div className="flex">
                       <h2 className="text-white font-semibold mx-2 ]">
                         {formatViews(video?.statistics?.viewCount)} views
@@ -240,7 +240,7 @@ const Watch = () => {
                     </div>
                     <div>
                       <p className="mx-2">
-                        {video?.snippet?.description.substring(0, 30)}...
+                        {video?.snippet?.description.substring(0, 50)}...
                       </p>
                     </div>
                     <button
