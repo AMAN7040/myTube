@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -274,4 +274,4 @@ const Watch = () => {
   );
 };
 
-export default Watch;
+export default memo(Watch);
