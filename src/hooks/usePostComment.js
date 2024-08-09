@@ -16,7 +16,7 @@ const usePostComment = () => {
         videoId: videoId,
         topLevelComment: {
           snippet: {
-            textOriginal: commentText,
+            textOriginal: trimmedCommentText,
           },
         },
       },
