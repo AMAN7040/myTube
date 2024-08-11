@@ -94,7 +94,7 @@ const Watch = () => {
     >
       <div className="lg:flex 2xl:flex">
         <div className="w-[95%] md:w-[97%] lg:w-[69%] 2xl:w-[75%] h-full">
-          <div className="h-[25vh] md:h-[50vh] lg:h-[50vh] 2xl:h-[80vh]">
+          <div className="h-[30vh] md:h-[50vh] lg:h-[50vh] 2xl:h-[80vh]">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${videoId}`}
               controls
@@ -105,14 +105,14 @@ const Watch = () => {
           </div>
           {video && (
             <div>
-              <div className="flex flex-wrap md:flex-nowrap lg:flex-nowrap lg:justify-between 2xl:justify-between">
-                <div>
                   <div className="py-3 lg:py-3 2xl:py-2">
                     <h1 className="text-sm font-bold text-white md:text-[13px] lg:text-[14px] 2xl:text-lg">
                       {video?.snippet?.title}
                     </h1>
                   </div>
-                  <div className="flex">
+              <div className="flex flex-col md:flex-row lg:flex-row 2xl:flex-row md:justify-between lg:justify-between 2xl:justify-between">
+                <div className="">
+                  <div className="flex space-x-6 lg:space-x-5">
                     <div className="flex">
                       <div>
                         <img
@@ -139,12 +139,12 @@ const Watch = () => {
                     </div>
                     {user && (
                       <div
-                        className={` text-white border border-gray-300 rounded-full px-2 py-2 mx-1 my-2 md:px-3 md:mt-1 md:py-2 md:my-3 md:text-[10px]  lg:px-2 lg:mx-0 lg:my-4 lg:py-2 2xl:px-5 2xl:mx-6 2xl:my-3 ${
+                        className={` text-white border border-gray-300 rounded-3xl px-3 py-3 mx-4 my-1 ${
                           isSubscribed ? "bg-red-600" : "bg-black"
                         } `}
                       >
                         <div
-                          className="text-[9px] md:text-[10px] lg:text-[11px] 2xl:text-lg font-semibold cursor-pointer"
+                          className="text-[0.5rem] md:text-[0.65rem] lg:text-[0.75rem] 2xl:text-[0.9rem] font-semibold cursor-pointer"
                           onClick={handleSubscribe}
                         >
                           {userSubscribers.some(
@@ -156,36 +156,37 @@ const Watch = () => {
                       </div>
                     )}
                   </div>
+                  <hr className="my-3 block md:hidden lg:hidden 2xl:hidden"></hr>
                 </div>
                 {user && (
-                  <div className="flex mx-7 md:mx-0 lg:mx-0">
+                  <div className="flex justify-start space-x-5 lg:space-x-4 text-[0.7rem] lg:text-[0.85] 2xl:text-[0.9rem]">
                     <div
-                      className={`flex items-center text-white border border-gray-300 rounded-full text-[10px] px-2 py-2 mx-6 my-3 md:mt-12 md:mx-3 md:my-auto md:px-4 md:py-2 lg:px-4 lg:py-2 lg:mx-1 lg:my-auto lg:mt-16 2xl:px-5 2xl:py-2 2xl:mx-3 2xl:my-16 2xl:text-[14px] cursor-pointer ${
+                      className={`flex items-center text-white border border-gray-300 rounded-3xl px-4 py-3 mx-1 my-1 ${
                         isLiked
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
                       }`}
                       onClick={handleLike}
                     >
-                      <FontAwesomeIcon className="mx-[2px]" icon={faThumbsUp} />{" "}
+                      <FontAwesomeIcon className="mx-[3px]" icon={faThumbsUp} />{" "}
                       {formatViews(video?.statistics?.likeCount)}
                     </div>
                     <div
-                      className="text-white flex items-center bg-black opacity-25 border border-gray-300 rounded-full text-[10px] px-3 py-2 mx-4 my-3 md:mt-12  md:my-auto md:mx-3 md:px-4 md:py-2 lg:px-2 lg:py-2 lg:mx-3 lg:my-auto lg:mt-16 2xl:px-5 2xl:py-1 2xl:mx-3 2xl:my-16 2xl:text-[14px] hover:bg-gray-50 hover:opacity-70 hover:text-black cursor-pointer"
+                      className="text-white flex items-center bg-black opacity-25 border border-gray-300 rounded-3xl px-4 py-3 mx-1 my-1"
                       onClick={handleDislike}
                     >
                       <span className="hidden md:block lg:block 2xl:block">Dislike{' '}</span>
-                      <FontAwesomeIcon className="mx-[2px]" icon={faThumbsDown} />
+                      <FontAwesomeIcon className="mx-[3px]" icon={faThumbsDown} />
                     </div>
                     <div
-                      className={`text-white flex items-center border text-[10px] border-gray-300 rounded-full px-3 py-2 mx-2 my-3 md:mt-12 md:mx-3 md:px-4 md:my-auto md:py-2 lg:px-2 lg:py-2 lg:mx-1 lg:my-auto lg:mt-16 2xl:px-5 2xl:text-[14px] 2xl:py-2 2xl:mx-2 2xl:my-16 cursor-pointer ${
+                      className={`text-white border border-gray-300 rounded-3xl px-4 py-3 mx-1 my-1 ${
                         isSaved
                           ? "bg-blue-500 text-black"
                           : "bg-black opacity-25 hover:bg-gray-50 hover:opacity-70 hover:text-black"
                       }`}
                       onClick={handleSave}
                     >
-                      <FontAwesomeIcon icon={faSquarePlus} className="mx-[2px] md:mx-1 2xl:mx-2" />
+                      <FontAwesomeIcon icon={faSquarePlus} className="mx-[3px]" />
                       {isSaved ? "Saved" : "Save"}
                     </div>
                   </div>

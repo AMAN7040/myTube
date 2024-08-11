@@ -69,7 +69,7 @@ const Header = () => {
       </div>
       <div className="col-span-10 flex justify-center items-center">
         <input
-          className="border my-1 w-[80%] h-9 rounded-l-full bg-transparent text-white px-1 2xl:px-4 2xl:h-11 2xl:my-2 2xl:w-1/2"
+          className="border my-1 w-[80%] h-9 rounded-l-full bg-transparent text-white px-1 md:w-3/4 2xl:px-4 2xl:h-11 2xl:my-2 2xl:w-2/3"
           placeholder="Search"
           style={{ borderColor: "#FFFFFF14" }}
           type="text"

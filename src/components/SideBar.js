@@ -58,10 +58,10 @@ const SideBar = () => {
       <Link to={"/"}>
         <div className="flex items-center mb-4 cursor-pointer text-white">
           <FontAwesomeIcon
-            className="text-lg px-[9px] w-1/4 md:px-5 md:py-2 2xl:text-xl 2xl:px-4 2xl:py-2"
+            className="text-lg px-[9px] w-1/4 md:px-4 md:py-2 2xl:text-xl 2xl:px-4 2xl:py-2"
             icon={faHomeAlt}
           />
-          <h4 className="font-medium text-[12px] md:text-[14px] lg:text-[14px] pl-0 md:pl-2 lg:pl-2 w-3/4 2xl:text-[15px] 2xl:pl-4">
+          <h4 className="font-medium text-[12px] md:text-[14px] lg:text-[14px] pl-0 md:pl-0 lg:pl-2 w-3/4 2xl:text-[15px] 2xl:pl-4">
             Home
           </h4>
         </div>

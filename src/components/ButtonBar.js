@@ -15,18 +15,34 @@ const sliderSettings = {
   slidesToScroll: 3,
   responsive: [
     {
-      breakpoint: 1024,
+      breakpoint: 1500,
       settings: {
-        slidesToShow: 5,
+        slidesToShow: 8,
         slidesToScroll: 3,
         infinite: true,
       },
     },
     {
-      breakpoint: 1030,
+      breakpoint: 1300,
+      settings: {
+        slidesToShow: 7,
+        slidesToScroll: 3,
+        infinite: true,
+      },
+    },
+    {
+      breakpoint: 1100,
+      settings: {
+        slidesToShow: 6,
+        slidesToScroll: 3,
+        infinite: true,
+      },
+    },
+    {
+      breakpoint: 1024,
       settings: {
         slidesToShow: 5,
-        slidesToScroll: 2,
+        slidesToScroll: 3,
         infinite: true,
       },
     },
@@ -40,7 +56,7 @@ const sliderSettings = {
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 2,
       },
     },
@@ -51,6 +67,13 @@ const sliderSettings = {
         slidesToScroll: 2,
       },
     },
+    {
+      breakpoint: 390,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    }
   ],
 };
 
@@ -72,7 +95,7 @@ const ButtonBar = () => {
   if (!category || category.length === 0) return null;
 
   return (
-    <div className="px-12 py-2 md:px-10 2xl:px-10 2xl:py-3 overflow-visible text-white bg-transparent">
+    <div className="px-8 py-2 md:px-10 lg:px-12 2xl:px-10 2xl:py-3 overflow-visible text-white bg-transparent">
       <Slider {...sliderSettings}>
         <div className="px-1 pt-3 2xl:px-2 text-xs 2xl:text-sm">
           <button

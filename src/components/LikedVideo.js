@@ -30,11 +30,11 @@ const LikedVideo = () => {
       <div
       className={`flex mt-20 bg-transparent ${
         isSidebarOpen
-          ? "ml-[8rem] lg:ml-[11rem] 2xl:ml-[17rem]"
-          : "ml-[3rem] lg:ml-[4rem] 2xl:ml-[6rem]"
+          ? "ml-[8rem] md:ml-[9.5rem] lg:ml-[11rem] 2xl:ml-[17rem]"
+          : "ml-[1rem] md:ml-[3.7rem] lg:ml-[4rem] 2xl:ml-[6rem]"
       } h-screen w-full`}
       >
-        <div className="w-1/5 bg-gradient-to-b from-red-400 rounded-xl">
+        <div className="w-[17%] bg-gradient-to-b from-red-400 rounded-xl">
           <img
            className="rounded-full w-1/2 mx-auto my-2 lg:my-4 2xl:my-5"
             src={user?.photoUrl}
@@ -59,11 +59,11 @@ const LikedVideo = () => {
     <div
     className={`flex mt-20 bg-transparent ${
       isSidebarOpen
-        ? "ml-[8rem] lg:ml-[11rem] 2xl:ml-[17rem]"
-        : "ml-[3rem] lg:ml-[4rem] 2xl:ml-[6rem]"
+        ? "ml-[8rem] md:ml-[9.5rem] lg:ml-[11rem] 2xl:ml-[17rem]"
+        : "ml-[1rem] md:ml-[3.7rem] lg:ml-[4rem] 2xl:ml-[6rem]"
     } h-screen w-full`}
     >
-      <div className="w-1/5 bg-gradient-to-b from-red-400 rounded-xl">
+      <div className="w-[17%] bg-gradient-to-b from-red-400 rounded-xl">
         <img
           className="rounded-full w-1/2 mx-auto my-2 lg:my-4 2xl:my-5"
           src={user?.photoUrl}
@@ -75,7 +75,7 @@ const LikedVideo = () => {
           {"  .  "} Videos -{likedVideos.length}
         </p>
       </div>
-      <div className="w-3/5">
+      <div className="w-2/3">
         {likedVideos &&
           likedVideos.map((video) => (
             <div className="2xl:flex">
@@ -86,7 +86,7 @@ const LikedVideo = () => {
                   alt="videoImg"
                 />
               </div>
-              <div className="my-1 w-full 2xl:my-5">
+              <div className="my-1 mb-5 w-full lg:my-3 2xl:my-5">
                 <div className="flex justify-between">
                 <div className="text-white mx-3 text-xs my-1 lg:text-[13px] lg:mx-8 2xl:text-lg 2xl:my-2">{video?.snippet?.title}</div>
                 <div className="my-1 mx-0 relative right-0 lg:mx-3 2xl:my-2 2xl:mx-5 2xl:right-5">
@@ -100,7 +100,7 @@ const LikedVideo = () => {
                       />
                     </button>
                     {showDropdown === video.id && (
-                     <div className="absolute bg-white rounded-xl shadow-lg mx-2 -my-6 2xl:right-2 2xl:mx-4 2xl:-my-7 ">
+                     <div className={`absolute bg-white rounded-xl shadow-lg mx-2 -my-6 ${isSidebarOpen? "right-1" : ''}  2xl:right-2 2xl:mx-4 2xl:-my-7 `}>
                      <button
                        className="block text-gray-700 px-1 py-1 text-xs hover:bg-gray-200 w-full text-left 2xl:px-4 2xl:py-2 2xl:text-sm"
                           onClick={() => handleRemoveLikedVideo(video.id)}

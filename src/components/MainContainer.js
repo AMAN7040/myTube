@@ -10,7 +10,7 @@ const MainContainer = () => {
     <div
       className={`flex flex-col mt-14 transition-all duration-300 bg-transparent ${
         isBarOpen
-          ? "ml-[4.7rem] md:ml-[8rem] 2xl:ml-[15rem]"
+          ? "ml-[4.8rem] md:ml-[8rem] 2xl:ml-[15rem]"
           : "ml-[0rem] md:ml-[3rem] 2xl:ml-[6rem] "
       } h-[calc(100vh-3.5rem)] overflow-hidden`}
     >

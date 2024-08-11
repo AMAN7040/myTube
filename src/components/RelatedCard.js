@@ -24,8 +24,8 @@ const RelatedCard = ({ item }) => {
         alt="video"
         className="rounded-xl w-[50%] mb-3"
       />
-      <div className="w-[50%] px-1 py-1 md:px-4 md:py-4 lg:px-1 lg:py-2 2xl:px-2 2xl:py-2">
-        <div className="font-semibold text-[9px] md:text-[12px] lg:text-[12px] 2xl:text-[14px] text-white mb-2">{title}</div>
+      <div className="w-[50%]  px-1 py-1 md:px-4 md:py-4 lg:px-1 lg:py-2 2xl:px-2 2xl:py-2">
+        <div className="font-semibold text-[9px] md:text-[11px] lg:text-[12px] 2xl:text-[13px] text-white mb-2">{title}</div>
         <div className="flex  mb-2">
           {/* <img src={channelPhotoUrl} alt="channel" className="w-10 h-10 rounded-full mr-2" /> */}
           <div className="text-[9px] md:text-[12px] lg:text-[12px] 2xl:text-[12px]">
